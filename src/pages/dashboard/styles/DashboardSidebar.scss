@@ -1,0 +1,157 @@
+@use "../../../styles/variables" as variables;
+@use "../../../styles/mixins" as mixins;
+
+.dashboard-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 283px;
+  height: 100vh;
+  background: variables.$primary-white;
+  border-right: 1px solid variables.$border-primary;
+  z-index: 1000;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+
+  @include mixins.respond("medium") {
+    transform: translateX(-100%);
+
+    &.mobile-open {
+      transform: translateX(0);
+    }
+  }
+}
+
+.sidebar-logo {
+  padding: 30px 32px;
+  border-bottom: 1px solid variables.$border-primary;
+
+  img {
+    height: 30px;
+    width: auto;
+  }
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 32px 0;
+}
+
+.nav-section {
+  margin-bottom: 32px;
+
+  &:first-child {
+    .nav-list {
+      border-bottom: 1px solid variables.$border-primary;
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.nav-section-title {
+  font-family: variables.$font-primary;
+  font-weight: variables.$font-medium;
+  font-size: 12px;
+  line-height: 14px;
+  color: variables.$text-secondary;
+  text-transform: uppercase;
+  margin: 0 0 16px 32px;
+  letter-spacing: 0.1em;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 32px;
+  text-decoration: none;
+  color: variables.$text-secondary;
+  font-family: variables.$font-primary;
+  font-weight: variables.$font-regular;
+  font-size: 16px;
+  line-height: 19px;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(variables.$primary-teal, 0.06);
+    color: variables.$text-primary;
+    border-left: 3px solid variables.$primary-teal;
+  }
+
+  &.active {
+    background: rgba(variables.$primary-teal, 0.06);
+    color: variables.$text-primary;
+    border-left: 3px solid variables.$primary-teal;
+
+    .nav-icon {
+      opacity: 1;
+    }
+  }
+}
+
+.nav-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 16px;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.nav-dropdown-icon {
+  width: 12px;
+  height: 12px;
+  margin-left: auto;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.nav-text {
+  flex: 1;
+}
+
+.sidebar-footer {
+  padding: 24px 32px;
+  border-top: 1px solid variables.$border-primary;
+}
+
+.logout-btn {
+  margin-bottom: 16px;
+}
+
+.sidebar-version {
+  font-family: variables.$font-primary;
+  font-size: 12px;
+  color: variables.$text-muted;
+  text-align: left;
+}
+
+.sidebar-mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+
+  @include mixins.respond("medium") {
+    display: block;
+  }
+}
