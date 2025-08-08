@@ -1,7 +1,18 @@
+import AuthLayout from "./components/AuthLayout";
+import AuthLogo from "./components/AuthLogo";
+import AuthIllustration from "./components/AuthIllustration";
+import LoginForm from "./components/LoginForm";
+import "./Login.scss";
+
 export default function Login() {
-  return (
-    <div>
-      <h1>Login Page</h1>
-    </div>
+  const leftContent = (
+    <>
+      <AuthLogo />
+      <AuthIllustration />
+    </>
   );
+
+  const rightContent = <LoginForm />;
+
+  return <AuthLayout leftContent={leftContent} rightContent={rightContent} />;
 }

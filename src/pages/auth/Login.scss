@@ -1,0 +1,184 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: $font-primary;
+}
+
+.login-left {
+  flex: 1;
+  background: #ffffff;
+  @include flex-column-center;
+  padding: 40px 60px;
+  position: relative;
+
+  .logo {
+    position: absolute;
+    top: 106px;
+    left: 97px;
+    width: 173.76px;
+    height: 36px;
+
+    @include image-container;
+  }
+
+  .illustration {
+    max-width: 600px;
+    width: 100%;
+    margin-top: 80px;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+}
+
+.login-right {
+  flex: 1;
+  background: #ffffff;
+  @include flex-center;
+  padding: 40px;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.11);
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 447px;
+}
+
+.login-form {
+  .title {
+    @include page-title;
+  }
+
+  .subtitle {
+    @include page-subtitle;
+  }
+
+  .form-group {
+    @include form-group;
+
+    .form-input {
+      @include form-input;
+    }
+
+    &.password-field {
+      .show-password {
+        @include password-toggle;
+      }
+    }
+  }
+
+  .forgot-password {
+    @include link-text;
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  .login-button {
+    @include primary-button;
+  }
+}
+
+// Responsive design
+@include respond("large") {
+  .login-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .login-left {
+    min-height: 40vh;
+    padding: 16px;
+    .logo {
+      position: static;
+      margin-bottom: 16px;
+      left: 0;
+      top: 0;
+    }
+    .illustration {
+      margin-top: 0;
+      max-width: 320px;
+    }
+  }
+
+  .login-right {
+    min-height: 60vh;
+    padding: 16px;
+    box-shadow: none;
+  }
+
+  .login-form-container {
+    padding: 0 8px;
+    max-width: 100vw;
+  }
+}
+
+@include respond("medium") {
+  .login-left {
+    min-height: 24vh;
+    padding: 8px;
+    .illustration {
+      max-width: 180px;
+    }
+  }
+  .login-right {
+    padding: 8px;
+  }
+  .login-form {
+    .title {
+      font-size: 24px;
+      line-height: 32px;
+    }
+    .subtitle {
+      font-size: 16px;
+      line-height: 22px;
+      margin-bottom: 24px;
+    }
+  }
+  .login-form-container {
+    padding: 0 4px;
+    max-width: 100vw;
+  }
+}
+
+@include respond("small") {
+  .login-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .login-left {
+    min-height: 16vh;
+    padding: 4px;
+    .logo {
+      margin-bottom: 8px;
+    }
+    .illustration {
+      display: none;
+    }
+  }
+  .login-right {
+    min-height: 40vh;
+    padding: 4px;
+    box-shadow: none;
+  }
+  .login-form {
+    .title {
+      font-size: 18px;
+      line-height: 24px;
+    }
+    .subtitle {
+      font-size: 14px;
+      line-height: 18px;
+      margin-bottom: 16px;
+    }
+  }
+  .login-form-container {
+    padding: 0 2px;
+    max-width: 100vw;
+  }
+}
