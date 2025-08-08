@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardSidebar from "./DashboardSidebar";
 import DashboardHeader from "./DashboardHeader";
+import { SidebarProvider } from "@/context/SidebarContext";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -8,12 +9,14 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className='dashboard-layout'>
-      <DashboardSidebar />
-      <div className='dashboard-main'>
+    <SidebarProvider>
+      <div className='dashboard-layout'>
         <DashboardHeader />
-        <main className='dashboard-content'>{children}</main>
+        <div className='dashboard-body'>
+          <DashboardSidebar />
+          <main className='dashboard-content'>{children}</main>
+        </div>
       </div>
-    </div>
+    </SidebarProvider>
   );
 }

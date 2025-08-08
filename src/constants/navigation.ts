@@ -3,8 +3,6 @@ import {
   Home,
   Users,
   UserCheck,
-  Banknote,
-  HandHeart,
   PiggyBank,
   FileText,
   UserX,
@@ -20,6 +18,10 @@ import {
   Percent,
   ClipboardList,
   LucideIcon,
+  DollarSign,
+  CreditCard,
+  Target,
+  UserPlus,
 } from "lucide-react";
 import { ROUTES } from "../routes/routeConstants";
 
@@ -45,6 +47,11 @@ export const NAVIGATION_SECTIONS: NavigationSection[] = [
         path: "#",
         hasDropdown: true,
       },
+    ],
+  },
+  {
+    title: "",
+    items: [
       { name: "Dashboard", icon: Home, path: ROUTES.DASHBOARD },
     ],
   },
@@ -52,9 +59,9 @@ export const NAVIGATION_SECTIONS: NavigationSection[] = [
     title: "CUSTOMERS",
     items: [
       { name: "Users", icon: Users, path: ROUTES.USERS },
-      { name: "Guarantors", icon: UserCheck, path: "#" },
-      { name: "Loans", icon: Banknote, path: "#" },
-      { name: "Decision Models", icon: HandHeart, path: "#" },
+      { name: "Guarantors", icon: UserPlus, path: "#" },
+      { name: "Loans", icon: DollarSign, path: "#" },
+      { name: "Decision Models", icon: Target, path: "#" },
       { name: "Savings", icon: PiggyBank, path: "#" },
       { name: "Loan Requests", icon: FileText, path: "#" },
       { name: "Whitelist", icon: UserCheck, path: "#" },
@@ -65,7 +72,7 @@ export const NAVIGATION_SECTIONS: NavigationSection[] = [
     title: "BUSINESSES",
     items: [
       { name: "Organization", icon: Briefcase, path: "#" },
-      { name: "Loan Products", icon: FileText, path: "#" },
+      { name: "Loan Products", icon: CreditCard, path: "#" },
       { name: "Savings Products", icon: Building, path: "#" },
       { name: "Fees and Charges", icon: Coins, path: "#" },
       { name: "Transactions", icon: ArrowRightLeft, path: "#" },

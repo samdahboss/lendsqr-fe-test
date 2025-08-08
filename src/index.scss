@@ -19,6 +19,12 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html,
+body,
+#root {
+  height: 100dvh;
+  min-height: 100dvh;
+}
 body {
   font-family: variables.$font-primary;
   line-height: variables.$leading-normal;

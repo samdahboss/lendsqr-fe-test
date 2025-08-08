@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Search, Bell, ChevronDown } from "lucide-react";
+import { Search, Bell, ChevronDown, Menu } from "lucide-react";
+import { useSidebar } from "@/context/useSidebar";
 import avatar from "@/assets/images/avatar.png";
 
 export default function DashboardHeader() {
   const [searchQuery, setSearchQuery] = useState("");
+  const { toggleMobileMenu } = useSidebar();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,6 +16,11 @@ export default function DashboardHeader() {
   return (
     <header className='dashboard-header'>
       <div className='header-content'>
+        {/* Logo Section */}
+        <div className='header-logo'>
+          <img src='/lendsqr-logo.svg' alt='Lendsqr' />
+        </div>
+
         {/* Search Section */}
         <div className='header-search'>
           <form onSubmit={handleSearch} className='search-form'>
@@ -42,16 +49,21 @@ export default function DashboardHeader() {
 
           {/* User Profile */}
           <div className='user-profile'>
-            <img
-              src={avatar}
-              alt='User Avatar'
-              className='user-avatar'
-            />
+            <img src={avatar} alt='User Avatar' className='user-avatar' />
             <span className='user-name'>Adedeji</span>
             <button className='dropdown-arrow' aria-label='User menu'>
               <ChevronDown size={16} />
             </button>
           </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className='mobile-menu-toggle'
+            onClick={toggleMobileMenu}
+            aria-label='Toggle navigation menu'
+          >
+            <Menu size={20} />
+          </button>
         </div>
       </div>
     </header>

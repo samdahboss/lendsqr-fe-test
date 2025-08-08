@@ -1,44 +1,21 @@
-import { LogOut, Menu } from "lucide-react";
-import { NAVIGATION_SECTIONS } from "../../../constants/navigation";
-import { useSidebarLogic } from "../../../hooks/useSidebarLogic";
+import { LogOut } from "lucide-react";
+import { NAVIGATION_SECTIONS } from "@/constants/navigation";
+import { useSidebarLogic } from "@/hooks/useSidebarLogic";
 import NavigationItemComponent from "./NavigationItem";
 import {
   getSidebarClasses,
   SIDEBAR_CLASSES,
   SIDEBAR_CONFIG,
-} from "../../../utils/sidebarUtils";
-import { SidebarProvider } from "../../../context/SidebarContext";
+} from "@/utils/sidebarUtils";
 
 export default function DashboardSidebar() {
-  return (
-    <SidebarProvider>
-      <DashboardSidebarContent />
-    </SidebarProvider>
-  );
-}
-
-function DashboardSidebarContent() {
-  const { isMobileMenuOpen, isActiveRoute, toggleMobileMenu, closeMobileMenu } =
+  const { isMobileMenuOpen, isActiveRoute, closeMobileMenu } =
     useSidebarLogic();
 
   return (
     <>
-      {/* Mobile Menu Button */}
-      <button
-        className={SIDEBAR_CLASSES.MOBILE_TOGGLE}
-        onClick={toggleMobileMenu}
-        aria-label='Toggle navigation menu'
-      >
-        <Menu size={20} />
-      </button>
-
       {/* Sidebar */}
       <aside className={getSidebarClasses(isMobileMenuOpen)}>
-        {/* Logo */}
-        <div className={SIDEBAR_CLASSES.LOGO}>
-          <img src='/lendsqr-logo.svg' alt='Lendsqr' />
-        </div>
-
         {/* Navigation */}
         <nav className={SIDEBAR_CLASSES.NAV}>
           {NAVIGATION_SECTIONS.map((section, sectionIndex) => (

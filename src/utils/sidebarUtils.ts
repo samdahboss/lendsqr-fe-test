@@ -14,7 +14,6 @@ export const SIDEBAR_CLASSES = {
   MOBILE_OPEN: "mobile-open",
   MOBILE_TOGGLE: "sidebar-mobile-toggle",
   MOBILE_OVERLAY: "sidebar-mobile-overlay",
-  LOGO: "sidebar-logo",
   NAV: "sidebar-nav",
   NAV_SECTION: "nav-section",
   NAV_SECTION_TITLE: "nav-section-title",

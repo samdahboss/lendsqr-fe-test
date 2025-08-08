@@ -3,33 +3,51 @@
 
 .dashboard-layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background-color: variables.$bg-secondary;
 }
 
-.dashboard-main {
-  flex: 1;
+.dashboard-body {
   display: flex;
-  flex-direction: column;
-  margin-left: 283px; // Sidebar width
-  min-height: 100vh;
+  flex: 1;
+  min-height: calc(100vh - 100px); // Subtract header height
+
+  @include mixins.respond("large") {
+    min-height: calc(100vh - 80px);
+  }
 
   @include mixins.respond("medium") {
-    margin-left: 0;
+    min-height: calc(100vh - 70px);
   }
 }
 
 .dashboard-content {
   flex: 1;
-  padding: 40px;
-  background-color: variables.$bg-secondary;
+  padding: 60px 40px 40px 40px;
+  background-color: #f5f5f9;
+  margin-left: 283px; // Sidebar width
+  margin-top: 100px; // Header height
+  overflow-y: auto;
+  min-height: calc(100vh - 100px);
 
   @include mixins.respond("large") {
     padding: 24px;
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
+  }
+
+  @include mixins.respond("tablet-large") {
+    margin-left: 220px;
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
   }
 
   @include mixins.respond("medium") {
     padding: 16px;
+    margin-left: 0;
+    margin-top: 70px;
+    min-height: calc(100vh - 70px);
   }
 }
 
