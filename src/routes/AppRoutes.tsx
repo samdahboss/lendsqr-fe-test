@@ -1,8 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/auth/Login";
-import Dashboard from "../pages/dashboard/Dashboard";
-import Users from "../pages/users/Users";
-import UserDetails from "../pages/users/UserDetails";
+import DashboardRoutes from "./DashboardRoutes";
 import ProtectedRoute from "./ProtectedRoute";
 import { ROUTES } from "./routeConstants";
 
@@ -12,28 +10,12 @@ export default function AppRoutes() {
       {/* Public Routes */}
       <Route path={ROUTES.LOGIN} element={<Login />} />
 
-      {/* Protected Routes */}
+      {/* Protected Dashboard Routes */}
       <Route
-        path={ROUTES.DASHBOARD}
+        path='/dashboard/*'
         element={
           <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path={ROUTES.USERS}
-        element={
-          <ProtectedRoute>
-            <Users />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path={ROUTES.USER_DETAILS}
-        element={
-          <ProtectedRoute>
-            <UserDetails />
+            <DashboardRoutes />
           </ProtectedRoute>
         }
       />
