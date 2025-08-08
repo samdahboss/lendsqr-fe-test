@@ -42,54 +42,32 @@ export function useUsers(initialFilters: UserFilters = {}) {
       .finally(() => setIsLoading(false));
   }, []);
 
-  // Filtering logic
+  // Filtering logic (refactored for maintainability)
   const filteredUsers = useMemo(() => {
     return users.filter((user) => {
-      // Organization
-      if (
-        filters.organization &&
-        user.organization?.toLowerCase() !== filters.organization.toLowerCase()
-      ) {
-        return false;
-      }
-      // Username
-      if (
-        filters.username &&
-        !user.username?.toLowerCase().includes(filters.username.toLowerCase())
-      ) {
-        return false;
-      }
-      // Email
-      if (
-        filters.email &&
-        !user.email?.toLowerCase().includes(filters.email.toLowerCase())
-      ) {
-        return false;
-      }
-      // Date (exact match or partial)
-      if (
-        filters.date &&
-        user.date_joined &&
-        !user.date_joined.includes(filters.date)
-      ) {
-        return false;
-      }
-      // Phone
-      if (
-        filters.phone &&
-        user.phone &&
-        !String(user.phone).includes(filters.phone)
-      ) {
-        return false;
-      }
-      // Status
-      if (
-        filters.status &&
-        user.status?.toLowerCase() !== filters.status.toLowerCase()
-      ) {
-        return false;
-      }
-      return true;
+      return Object.entries(filters).every(([key, value]) => {
+        if (!value) return true;
+        const userValue = user[key as keyof User];
+        if (userValue == null) return false;
+        // For date, allow partial match
+        if (key === "date") {
+          return String(user["date_joined"] ?? "").includes(String(value));
+        }
+        // For phone, match as string includes
+        if (key === "phone") {
+          return String(userValue).includes(String(value));
+        }
+        // For status and organization, match case-insensitive equality
+        if (key === "status" || key === "organization") {
+          return (
+            String(userValue).toLowerCase() === String(value).toLowerCase()
+          );
+        }
+        // For other fields, case-insensitive substring match
+        return String(userValue)
+          .toLowerCase()
+          .includes(String(value).toLowerCase());
+      });
     });
   }, [users, filters]);
 
