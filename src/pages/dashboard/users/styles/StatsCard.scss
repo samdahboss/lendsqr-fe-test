@@ -1,0 +1,111 @@
+.stats-cards {
+  display: contents; // Use parent grid
+}
+
+.stats-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  border-radius: 4px;
+  padding: 30px 26px;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 8px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px 16px;
+    gap: 12px;
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    // Icon background colors based on card type
+    &--users {
+      background: rgba(223, 24, 255, 0.1);
+      
+      svg {
+        color: #DF18FF;
+      }
+    }
+
+    &--active {
+      background: rgba(87, 24, 255, 0.1);
+      
+      svg {
+        color: #5718FF;
+      }
+    }
+
+    &--loans {
+      background: rgba(245, 95, 68, 0.1);
+      
+      svg {
+        color: #F55F44;
+      }
+    }
+
+    &--savings {
+      background: rgba(255, 51, 102, 0.1);
+      
+      svg {
+        color: #FF3366;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__title {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #545F7D;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  &__value {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    color: #213F7D;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+}

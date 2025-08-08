@@ -1,0 +1,127 @@
+@import "@/styles/variables.scss";
+
+.action-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid #213F7D;
+  border-radius: 4px;
+  box-shadow: 0px 7px 40px rgba(0, 0, 0, 0.09);
+  z-index: 1000;
+  min-width: 180px;
+  overflow: hidden;
+  animation: fadeInDown 0.15s ease-out;
+  font-family: 'Work Sans', sans-serif;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 16px;
+    color: #545F7D;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    transition: all 0.15s ease;
+    border-bottom: 1px solid #E5E7EB;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: #FBFCFD;
+      color: #213F7D;
+    }
+
+    &:active {
+      background: #F8F9FA;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    // Specific action colors
+    &--view {
+      &:hover {
+        background: rgba(57, 205, 204, 0.05);
+        color: #39CDCC;
+
+        svg {
+          color: #39CDCC;
+        }
+      }
+    }
+
+    &--blacklist {
+      &:hover {
+        background: rgba(228, 3, 59, 0.05);
+        color: #E4033B;
+
+        svg {
+          color: #E4033B;
+        }
+      }
+    }
+
+    &--activate {
+      &:hover {
+        background: rgba(57, 205, 98, 0.05);
+        color: #39CD62;
+
+        svg {
+          color: #39CD62;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Overlay to close menu when clicking outside
+.action-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: transparent;
+}
+
+// Mobile adjustments
+@media (max-width: 768px) {
+  .action-menu {
+    min-width: 160px;
+    right: -20px; // Adjust positioning for mobile
+
+    &__item {
+      padding: 14px 16px;
+      font-size: 12px;
+      gap: 12px;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+}
