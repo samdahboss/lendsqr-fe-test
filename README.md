@@ -1,69 +1,54 @@
-# React + TypeScript + Vite
+# Lendsqr Admin Console Submission
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+This is my submission for the Lendsqr frontend engineering assessment. The project is a React application built with TypeScript and SCSS, closely following the provided Figma design. It demonstrates my approach to frontend architecture, code quality, and responsiveness.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What This Submission Contains
 
-## Expanding the ESLint configuration
+- **Login Page:** User authentication interface styled to match the Figma design.
+- **Dashboard Page:** Overview of key metrics and navigation, fully responsive.
+- **User Page:** Displays a paginated list of 500 users fetched from a mock API (`public/users.json`).
+- **User Details Page:** Shows detailed information for a selected user, with data stored and retrieved using local storage for persistence.
+- **Reusable UI Components:** Custom input fields, buttons, and layouts for consistency and maintainability.
+- **Routing:** Protected routes and navigation using React Router.
+- **State Management:** React hooks and context for managing user data and authentication state.
+- **Unit Tests:** Key components and pages are covered with positive and negative scenario tests using Jest and React Testing Library.
+- **Mobile Responsiveness:** All pages adapt to different screen sizes using SCSS and CSS media queries.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## My Approach
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Design Fidelity:** I prioritized pixel-perfect implementation by referencing the Figma design and using SCSS for custom styling.
+- **Code Structure:** The codebase is organized by feature (pages, components, hooks, services) for scalability and clarity.
+- **Mock Data:** User data is served from a local JSON file to simulate API responses, ensuring fast development and easy testing.
+- **Persistence:** User details are cached in local storage to allow quick retrieval and offline access.
+- **Testing:** I wrote unit tests for critical components and flows, focusing on both expected and edge cases.
+- **Responsiveness:** I used SCSS mixins and variables to ensure the UI looks great on all devices.
+- **Best Practices:** Consistent naming, semantic HTML, and clear commit messages throughout the project.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Setup Instructions
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Clone the repository:**
+   ```powershell
+   git clone <your-repo-url>
+   cd lendsqr-app
+   ```
+2. **Install dependencies:**
+   ```powershell
+   npm install
+   ```
+3. **Start the development server:**
+   ```powershell
+   npm run dev
+   ```
+   The app will be available at `http://localhost:5173` (or the port shown in your terminal).
+4. **Run tests:**
+   ```powershell
+   npm run test
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Additional Notes
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- All mock data is located in `public/users.json`.
+- SCSS variables and mixins are in `src/styles/variables.scss` and `src/styles/mixins.scss`.
+- For any issues or questions, please contact me via GitHub.
