@@ -53,7 +53,7 @@ describe("DashboardHeader", () => {
   it("renders notification bell", () => {
     render(<DashboardHeader />);
 
-    // Look for the bell icon by class or just verify header functionality  
+    // Look for the bell icon by class or just verify header functionality
     const header = screen.getByRole("banner");
     expect(header).toBeInTheDocument();
   });
