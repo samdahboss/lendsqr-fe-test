@@ -1,13 +1,14 @@
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  preset: "ts-jest",
+  testEnvironment: "jsdom",
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
+    "^@/(.*)$": "<rootDir>/src/$1",
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
   },
   transform: {
-    '^.+\\.(ts|tsx)$': ['ts-jest', { tsconfig: 'tsconfig.app.json' }],
+    "^.+\\.(ts|tsx)$": ["ts-jest", { tsconfig: "tsconfig.app.json" }],
   },
-  setupFiles: ['<rootDir>/jest.setup.js'],
-  setupFilesAfterEnv: ['@testing-library/jest-dom'],
+  setupFiles: ["<rootDir>/jest.setup.js"],
+  setupFilesAfterEnv: ["@testing-library/jest-dom"],
 };

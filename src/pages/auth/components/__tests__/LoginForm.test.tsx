@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import LoginForm from "../LoginForm";
 
@@ -46,26 +46,30 @@ describe("LoginForm", () => {
     expect(screen.getByRole("button", { name: /log in/i })).not.toBeDisabled();
   });
 
-  it("calls onSubmit with correct data when form is submitted", () => {
+  it("calls onSubmit with correct data when form is submitted", async () => {
     render(
       <MemoryRouter>
         <LoginForm onSubmit={mockOnSubmit} />
       </MemoryRouter>
     );
-    fireEvent.change(screen.getByPlaceholderText(/email/i), {
-      target: { value: "test@example.com" },
+
+    await act(async () => {
+      fireEvent.change(screen.getByPlaceholderText(/email/i), {
+        target: { value: "test@example.com" },
+      });
+      fireEvent.change(screen.getByPlaceholderText(/password/i), {
+        target: { value: "password123" },
+      });
+      fireEvent.click(screen.getByRole("button", { name: /log in/i }));
     });
-    fireEvent.change(screen.getByPlaceholderText(/password/i), {
-      target: { value: "password123" },
-    });
-    fireEvent.click(screen.getByRole("button", { name: /log in/i }));
+
     expect(mockOnSubmit).toHaveBeenCalledWith({
       email: "test@example.com",
       password: "password123",
     });
   });
 
-  it("shows password when show button is clicked", () => {
+  it("shows password when show button is clicked", async () => {
     render(
       <MemoryRouter>
         <LoginForm onSubmit={mockOnSubmit} />
@@ -74,7 +78,11 @@ describe("LoginForm", () => {
     const passwordInput = screen.getByPlaceholderText(/password/i);
     const showButton = screen.getByText(/show/i);
     expect(passwordInput).toHaveAttribute("type", "password");
-    fireEvent.click(showButton);
+
+    await act(async () => {
+      fireEvent.click(showButton);
+    });
+
     // This assumes PasswordInput toggles type to text
     expect(passwordInput).toHaveAttribute("type", "text");
   });
