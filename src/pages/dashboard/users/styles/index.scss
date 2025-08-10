@@ -1,9 +1,9 @@
 // Main page styles
-@import "./Users.scss";
+@use "./Users.scss";
 
 // Component styles
-@import "./StatsCard.scss";
-@import "./UsersFilter.scss";
-@import "./UsersTable.scss";
-@import "./ActionMenu.scss";
-@import "./Pagination.scss";
+@use "./StatsCard.scss";
+@use "./UsersFilter.scss";
+@use "./UsersTable.scss";
+@use "./ActionMenu.scss";
+@use "./Pagination.scss";

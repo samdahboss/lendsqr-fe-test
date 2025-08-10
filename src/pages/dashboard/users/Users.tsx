@@ -1,10 +1,11 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useUsers } from "@/hooks/useUsers";
 import { StatsCards } from "./components/StatsCard";
 import { FilterForm } from "./components/FilterForm";
 import UsersTable from "./components/UsersTable";
 import Pagination from "./components/Pagination";
 import "./styles/index.scss";
+
 
 export default function Users() {
   const [showFilters, setShowFilters] = useState(false);
