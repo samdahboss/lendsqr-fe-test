@@ -4,15 +4,15 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background: #FFFFFF;
-  border: 1px solid #213F7D;
+  background: #ffffff;
+  border: 1px solid rgba(84, 95, 125, 0.04);
   border-radius: 4px;
-  box-shadow: 0px 7px 40px rgba(0, 0, 0, 0.09);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   z-index: 1000;
   min-width: 180px;
   overflow: hidden;
   animation: fadeInDown 0.15s ease-out;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
 
   &__item {
     display: flex;
@@ -21,26 +21,26 @@
     padding: 16px 20px;
     font-size: 14px;
     line-height: 16px;
-    color: #545F7D;
+    color: #545f7d;
     cursor: pointer;
     border: none;
     background: none;
     width: 100%;
     text-align: left;
     transition: all 0.15s ease;
-    border-bottom: 1px solid #E5E7EB;
+    border-bottom: 1px solid rgba(33, 63, 125, 0.05);
 
     &:last-child {
       border-bottom: none;
     }
 
     &:hover {
-      background: #FBFCFD;
-      color: #213F7D;
+      background: rgba(39, 205, 204, 0.02);
+      color: #213f7d;
     }
 
     &:active {
-      background: #F8F9FA;
+      background: rgba(39, 205, 204, 0.05);
     }
 
     svg {
@@ -53,10 +53,10 @@
     &--view {
       &:hover {
         background: rgba(57, 205, 204, 0.05);
-        color: #39CDCC;
+        color: #39cdcc;
 
         svg {
-          color: #39CDCC;
+          color: #39cdcc;
         }
       }
     }
@@ -64,10 +64,10 @@
     &--blacklist {
       &:hover {
         background: rgba(228, 3, 59, 0.05);
-        color: #E4033B;
+        color: #e4033b;
 
         svg {
-          color: #E4033B;
+          color: #e4033b;
         }
       }
     }
@@ -75,10 +75,10 @@
     &--activate {
       &:hover {
         background: rgba(57, 205, 98, 0.05);
-        color: #39CD62;
+        color: #39cd62;
 
         svg {
-          color: #39CD62;
+          color: #39cd62;
         }
       }
     }

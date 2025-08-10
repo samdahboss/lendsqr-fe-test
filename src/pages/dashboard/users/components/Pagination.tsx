@@ -17,8 +17,6 @@ const Pagination: React.FC<PaginationProps> = ({
   onPageChange,
   onItemsPerPageChange,
 }) => {
-  const startItem = (currentPage - 1) * itemsPerPage + 1;
-  const endItem = Math.min(currentPage * itemsPerPage, totalItems);
 
   // Generate page numbers to display
   const getPageNumbers = () => {
@@ -63,16 +61,14 @@ const Pagination: React.FC<PaginationProps> = ({
           <select
             value={itemsPerPage}
             onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
+            className='pagination__select'
           >
             <option value={10}>10</option>
             <option value={25}>25</option>
             <option value={50}>50</option>
             <option value={100}>100</option>
           </select>
-          <span>out of {totalItems}</span>
-        </div>
-        <div className='pagination__range'>
-          {startItem}-{endItem} of {totalItems}
+          <span>out of {totalItems.toLocaleString()}</span>
         </div>
       </div>
 
@@ -82,12 +78,21 @@ const Pagination: React.FC<PaginationProps> = ({
             className='pagination__button pagination__button--prev'
             onClick={() => onPageChange(currentPage - 1)}
             disabled={currentPage === 1}
+            aria-label='Previous page'
           >
-            <svg viewBox='0 0 20 20' fill='currentColor'>
+            <svg
+              width='14'
+              height='14'
+              viewBox='0 0 14 14'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
               <path
-                fillRule='evenodd'
-                d='M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z'
-                clipRule='evenodd'
+                d='M9.33341 2.66699L4.66675 7.33366L9.33341 12.0003'
+                stroke='#545F7D'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
               />
             </svg>
           </button>
@@ -113,12 +118,21 @@ const Pagination: React.FC<PaginationProps> = ({
             className='pagination__button pagination__button--next'
             onClick={() => onPageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
+            aria-label='Next page'
           >
-            <svg viewBox='0 0 20 20' fill='currentColor'>
+            <svg
+              width='14'
+              height='14'
+              viewBox='0 0 14 14'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
               <path
-                fillRule='evenodd'
-                d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                clipRule='evenodd'
+                d='M4.66675 2.66699L9.33341 7.33366L4.66675 12.0003'
+                stroke='#545F7D'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
               />
             </svg>
           </button>

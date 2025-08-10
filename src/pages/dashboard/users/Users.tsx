@@ -6,7 +6,6 @@ import UsersTable from "./components/UsersTable";
 import Pagination from "./components/Pagination";
 import "./styles/index.scss";
 
-
 export default function Users() {
   const [showFilters, setShowFilters] = useState(false);
   const [sortColumn, setSortColumn] = useState<string>("");
@@ -18,36 +17,12 @@ export default function Users() {
     setFilters,
     isLoading,
     error,
-    allUsers,
     page,
     setPage,
     pageSize,
     setPageSize,
     total,
   } = useUsers();
-
-  // Calculate statistics based on real data
-  const stats = useMemo(() => {
-    const totalUsers = allUsers.length;
-    const activeUsers = allUsers.filter(
-      (user) => user.status?.toLowerCase() === "active"
-    ).length;
-    const usersWithLoans = allUsers.filter(
-      (user) =>
-        user.status?.toLowerCase() === "pending" ||
-        user.status?.toLowerCase() === "active"
-    ).length;
-    const usersWithSavings = allUsers.filter(
-      (user) => user.status?.toLowerCase() === "active"
-    ).length;
-
-    return {
-      total: totalUsers,
-      active: activeUsers,
-      withLoans: usersWithLoans,
-      withSavings: usersWithSavings,
-    };
-  }, [allUsers]);
 
   // Sort functionality
   const sortedUsers = useMemo(() => {
@@ -101,7 +76,7 @@ export default function Users() {
 
       {/* Stats Cards */}
       <div className='users-page__stats'>
-        <StatsCards stats={stats} />
+        <StatsCards />
       </div>
 
       {/* Main Content */}

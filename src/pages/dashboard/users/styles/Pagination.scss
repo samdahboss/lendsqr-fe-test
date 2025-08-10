@@ -1,17 +1,17 @@
 @use "@/styles/variables.scss";
+@use "@/styles/mixins.scss";
 
 .pagination {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 28px 30px;
-  background: #FFFFFF;
-  border-top: 1px solid #213F7D;
   flex-wrap: wrap;
   gap: 20px;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
+  background: #f5f6fa;
 
-  @media (max-width: 768px) {
+  @include mixins.respond("medium") {
     padding: 20px 16px;
     flex-direction: column;
     align-items: stretch;
@@ -22,11 +22,11 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    color: #545F7D;
+    color: #545f7d;
     font-size: 14px;
     line-height: 16px;
 
-    @media (max-width: 768px) {
+    @include mixins.respond("medium") {
       flex-direction: column;
       gap: 12px;
       text-align: center;
@@ -40,12 +40,12 @@
 
     select {
       padding: 12px 32px 12px 16px;
-      border: 1px solid #213F7D;
+      border: 1px solid #213f7d;
       border-radius: 4px;
-      background: #FFFFFF;
+      background: #213f7d1a;
       font-size: 14px;
       line-height: 16px;
-      color: #545F7D;
+      color: #545f7d;
       cursor: pointer;
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23545F7D' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
       background-position: right 12px center;
@@ -55,7 +55,7 @@
 
       &:focus {
         outline: none;
-        border-color: #39CDCC;
+        border-color: #39cdcc;
       }
     }
   }
@@ -70,7 +70,7 @@
     align-items: center;
     gap: 20px;
 
-    @media (max-width: 768px) {
+    @include mixins.respond("medium") {
       justify-content: center;
     }
   }
@@ -87,9 +87,9 @@
     justify-content: center;
     width: 32px;
     height: 32px;
-    border: 1px solid #545F7D;
-    background: #FFFFFF;
-    color: #545F7D;
+    border: none;
+    background: transparent;
+    color: #545f7d;
     font-size: 16px;
     line-height: 19px;
     font-weight: 400;
@@ -97,31 +97,9 @@
     border-radius: 4px;
     transition: all 0.2s ease;
 
-    &:hover:not(:disabled) {
-      background: #FBFCFD;
-      border-color: #39CDCC;
-      color: #39CDCC;
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      background: #F8F9FA;
-    }
-
-    &--active {
-      background: #213F7D;
-      border-color: #213F7D;
-      color: #FFFFFF;
-
-      &:hover {
-        background: #1A3366;
-        border-color: #1A3366;
-      }
-    }
-
     &--prev,
     &--next {
+      background: #213f7d1a;
       svg {
         width: 14px;
         height: 14px;
@@ -132,11 +110,11 @@
       border: none;
       background: none;
       cursor: default;
-      
+
       &:hover {
         background: none;
         border: none;
-        color: #545F7D;
+        color: #545f7d;
       }
     }
   }
@@ -163,7 +141,7 @@
 }
 
 // Responsive adjustments for very small screens
-@media (max-width: 480px) {
+@include mixins.respond("small") {
   .pagination {
     &__button {
       width: 28px;
@@ -177,15 +155,6 @@
 
     &__info {
       font-size: 12px;
-    }
-  }
-}
-
-// Hide page numbers on very small screens, keep only prev/next
-@media (max-width: 360px) {
-  .pagination {
-    &__pages .pagination__button:not(.pagination__button--prev):not(.pagination__button--next) {
-      display: none;
     }
   }
 }

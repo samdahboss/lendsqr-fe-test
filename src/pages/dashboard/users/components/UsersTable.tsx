@@ -130,9 +130,9 @@ const UsersTable: React.FC<UsersTableProps> = ({
             users.map((user, index) => (
               <tr key={user._id || index}>
                 <td>{user.organization || "Lendsqr"}</td>
-                <td>{user.username || user.firstName || "-"}</td>
+                <td>{user.username || "-"}</td>
                 <td>{user.email || "-"}</td>
-                <td>{formatPhone(user.phone)}</td>
+                <td>0{formatPhone(user.phone)}</td>
                 <td className='hide-mobile'>{formatDate(user.date_joined)}</td>
                 <td>
                   <span
@@ -150,9 +150,27 @@ const UsersTable: React.FC<UsersTableProps> = ({
                           activeMenuIndex === index ? null : index
                         )
                       }
+                      aria-label='More actions'
                     >
-                      <svg viewBox='0 0 20 20' fill='currentColor'>
-                        <path d='M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z' />
+                      <svg
+                        width='20'
+                        height='20'
+                        viewBox='0 0 20 20'
+                        fill='none'
+                        xmlns='http://www.w3.org/2000/svg'
+                      >
+                        <path
+                          d='M9.99992 6.1112C10.9221 6.1112 11.6666 5.36676 11.6666 4.44453C11.6666 3.52231 10.9221 2.77787 9.99992 2.77787C9.0777 2.77787 8.33325 3.52231 8.33325 4.44453C8.33325 5.36676 9.0777 6.1112 9.99992 6.1112Z'
+                          fill='#545F7D'
+                        />
+                        <path
+                          d='M9.99992 11.6666C10.9221 11.6666 11.6666 10.9221 11.6666 9.99992C11.6666 9.0777 10.9221 8.33325 9.99992 8.33325C9.0777 8.33325 8.33325 9.0777 8.33325 9.99992C8.33325 10.9221 9.0777 11.6666 9.99992 11.6666Z'
+                          fill='#545F7D'
+                        />
+                        <path
+                          d='M9.99992 17.2221C10.9221 17.2221 11.6666 16.4777 11.6666 15.5554C11.6666 14.6332 10.9221 13.8888 9.99992 13.8888C9.0777 13.8888 8.33325 14.6332 8.33325 15.5554C8.33325 16.4777 9.0777 17.2221 9.99992 17.2221Z'
+                          fill='#545F7D'
+                        />
                       </svg>
                     </button>
                     {activeMenuIndex === index && (

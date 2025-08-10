@@ -12,12 +12,22 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ user, onAction }) => {
       action: "view",
       label: "View Details",
       icon: (
-        <svg viewBox='0 0 20 20' fill='currentColor'>
-          <path d='M10 12a2 2 0 100-4 2 2 0 000 4z' />
+        <svg
+          width='16'
+          height='16'
+          viewBox='0 0 16 16'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
           <path
-            fillRule='evenodd'
-            d='M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z'
-            clipRule='evenodd'
+            d='M8 1.5C4.96447 1.5 2.18295 3.69494 1.01991 7C2.18295 10.3051 4.96447 12.5 8 12.5C11.0355 12.5 13.817 10.3051 14.9801 7C13.817 3.69494 11.0355 1.5 8 1.5Z'
+            stroke='#545F7D'
+            strokeWidth='1.4'
+          />
+          <path
+            d='M8 9.5C9.10457 9.5 10 8.60457 10 7.5C10 6.39543 9.10457 5.5 8 5.5C6.89543 5.5 6 6.39543 6 7.5C6 8.60457 6.89543 9.5 8 9.5Z'
+            stroke='#545F7D'
+            strokeWidth='1.4'
           />
         </svg>
       ),
@@ -27,11 +37,23 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ user, onAction }) => {
       action: "blacklist",
       label: "Blacklist User",
       icon: (
-        <svg viewBox='0 0 20 20' fill='currentColor'>
+        <svg
+          width='16'
+          height='16'
+          viewBox='0 0 16 16'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
           <path
-            fillRule='evenodd'
-            d='M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z'
-            clipRule='evenodd'
+            d='M8 1.5C11.5899 1.5 14.5 4.41015 14.5 8C14.5 11.5899 11.5899 14.5 8 14.5C4.41015 14.5 1.5 11.5899 1.5 8C1.5 4.41015 4.41015 1.5 8 1.5Z'
+            stroke='#E4033B'
+            strokeWidth='1.4'
+          />
+          <path
+            d='M10.5 5.5L5.5 10.5'
+            stroke='#E4033B'
+            strokeWidth='1.4'
+            strokeLinecap='round'
           />
         </svg>
       ),
@@ -41,11 +63,16 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ user, onAction }) => {
       action: "activate",
       label: "Activate User",
       icon: (
-        <svg viewBox='0 0 20 20' fill='currentColor'>
+        <svg
+          width='16'
+          height='16'
+          viewBox='0 0 16 16'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
           <path
-            fillRule='evenodd'
-            d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-            clipRule='evenodd'
+            d='M7.33333 10.6667L12.6667 5.33333L14 6.66667L7.33333 13.3333L2 8L3.33333 6.66667L7.33333 10.6667Z'
+            fill='#39CD62'
           />
         </svg>
       ),
