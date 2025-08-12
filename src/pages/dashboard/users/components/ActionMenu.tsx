@@ -81,7 +81,7 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ user, onAction }) => {
   ];
 
   return (
-    <div className='action-menu'>
+    <>
       {menuItems.map((item) => (
         <button
           key={item.action}
@@ -92,7 +92,7 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ user, onAction }) => {
           {item.label}
         </button>
       ))}
-    </div>
+    </>
   );
 };
 

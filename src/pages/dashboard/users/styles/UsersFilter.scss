@@ -1,17 +1,15 @@
 @use "@/styles/variables.scss";
+@use "@/styles/mixins.scss";
 
 .filter-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(84, 95, 125, 0.4);
+  width: 100%;
+  height: 0;
+  background: transparent;
   z-index: 1000;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 40px;
+  pointer-events: none;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
@@ -19,48 +17,32 @@
   &.open {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
+    height: auto;
   }
 
   .filter-form {
     background: #ffffff;
-    border: 1px solid #213f7d;
+    border: 1px solid rgba(84, 95, 125, 0.14);
     border-radius: 4px;
-    padding: 30px;
+    padding: 20px;
     width: 270px;
-    max-height: 90vh;
+    max-height: 500px;
     overflow-y: auto;
-    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.1);
-    transform: translateY(-20px);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    transform: translateY(-10px);
     transition: transform 0.3s ease;
-    margin-left: 200px; // Position below table header
-    margin-top: 400px; // Adjust based on your layout
+    position: absolute;
+    top: 70px; // Position below the table header (adjust based on header height)
+    left: 30px; // Align with table content padding
+    pointer-events: auto;
 
     .open & {
       transform: translateY(0);
     }
 
     &__header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #e5e7eb;
-
-      svg {
-        width: 16px;
-        height: 16px;
-        color: #213f7d;
-      }
-
-      h3 {
-        font-family: "Work Sans", sans-serif;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 21px;
-        color: #213f7d;
-        margin: 0;
-      }
+      display: none; // Remove header as it's not shown in Figma
     }
 
     &__field {
@@ -79,8 +61,8 @@
       input,
       select {
         width: 100%;
-        padding: 16px;
-        border: 2px solid #213f7d;
+        padding: 14px 16px;
+        border: 1px solid rgba(84, 95, 125, 0.15);
         border-radius: 8px;
         font-family: "Work Sans", sans-serif;
         font-size: 14px;
@@ -96,7 +78,7 @@
         }
 
         &::placeholder {
-          color: #8b92a5;
+          color: rgba(84, 95, 125, 0.7);
         }
       }
 
@@ -114,11 +96,11 @@
     &__actions {
       display: flex;
       gap: 14px;
-      margin-top: 30px;
+      margin-top: 20px;
 
       button {
         flex: 1;
-        padding: 16px;
+        padding: 14px 16px;
         border-radius: 8px;
         font-family: "Work Sans", sans-serif;
         font-weight: 600;
@@ -134,8 +116,8 @@
           border-color: #545f7d;
 
           &:hover {
-            background: #545f7d;
-            color: white;
+            background: #f8f9fa;
+            color: #213f7d;
           }
         }
 
@@ -159,21 +141,31 @@
 }
 
 // Mobile adjustments
-@media (max-width: 768px) {
+@include mixins.respond("medium") {
   .filter-overlay {
-    padding: 20px;
-
     .filter-form {
-      width: 100%;
-      max-width: 320px;
-      margin-left: 0;
-      margin-top: 60px;
+      width: 280px;
+      left: 16px;
+      top: 60px;
       padding: 20px;
 
       &__actions {
         flex-direction: column;
         gap: 10px;
       }
+    }
+  }
+}
+
+@include mixins.respond("small") {
+  .filter-overlay {
+    .filter-form {
+      left: 12px;
+      right: 12px;
+      top: 50px;
+      width: auto;
+      max-width: none;
+      padding: 16px;
     }
   }
 }

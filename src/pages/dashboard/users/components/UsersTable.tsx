@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { User } from "../../../../hooks/useUsers";
-import ActionMenu from "./ActionMenu";
+import React, { useState, useEffect } from "react";
+import { User } from "@/hooks/useUsers";
 
 interface UsersTableProps {
   users: User[];
@@ -18,10 +17,24 @@ const UsersTable: React.FC<UsersTableProps> = ({
   onSort,
   sortColumn,
   sortDirection,
-  //   onToggleFilters,
-  //   showFilters
+  onToggleFilters,
+  // showFilters
 }) => {
   const [activeMenuIndex, setActiveMenuIndex] = useState<number | null>(null);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setActiveMenuIndex(null);
+    };
+
+    if (activeMenuIndex !== null) {
+      document.addEventListener("click", handleClickOutside);
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    }
+  }, [activeMenuIndex]);
 
   const handleSort = (column: string) => {
     if (onSort) {
@@ -29,10 +42,16 @@ const UsersTable: React.FC<UsersTableProps> = ({
     }
   };
 
+  const toggleActionMenu = (index: number, event: React.MouseEvent) => {
+    event.stopPropagation();
+    setActiveMenuIndex(activeMenuIndex === index ? null : index);
+  };
+
   const handleUserAction = (action: string, user: User) => {
-    console.log(`Action: ${action} on user:`, user);
+    console.log(`${action} user:`, user);
     setActiveMenuIndex(null);
-    // Implement action logic here
+    // Here you would implement the actual actions
+    // like routing to user details, updating user status, etc.
   };
 
   const formatDate = (dateString?: string) => {
@@ -84,39 +103,135 @@ const UsersTable: React.FC<UsersTableProps> = ({
               className={`sortable ${sortColumn === "organization" ? `sorted-${sortDirection}` : ""}`}
               onClick={() => handleSort("organization")}
             >
-              Organization
+              <div className='header-content'>
+                <span>Organization</span>
+                <button
+                  className='filter-btn'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggleFilters?.();
+                  }}
+                >
+                  <svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
+                    <path
+                      d='M6.22222 13.3333H9.77778V11.5556H6.22222V13.3333ZM0 2.66667V4.44444H16V2.66667H0ZM2.66667 8.88889H13.3333V7.11111H2.66667V8.88889Z'
+                      fill='#545F7D'
+                    />
+                  </svg>
+                </button>
+              </div>
             </th>
             <th
               className={`sortable ${sortColumn === "username" ? `sorted-${sortDirection}` : ""}`}
               onClick={() => handleSort("username")}
             >
-              Username
+              <div className='header-content'>
+                <span>Username</span>
+                <button
+                  className='filter-btn'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggleFilters?.();
+                  }}
+                >
+                  <svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
+                    <path
+                      d='M6.22222 13.3333H9.77778V11.5556H6.22222V13.3333ZM0 2.66667V4.44444H16V2.66667H0ZM2.66667 8.88889H13.3333V7.11111H2.66667V8.88889Z'
+                      fill='#545F7D'
+                    />
+                  </svg>
+                </button>
+              </div>
             </th>
             <th
               className={`sortable ${sortColumn === "email" ? `sorted-${sortDirection}` : ""}`}
               onClick={() => handleSort("email")}
             >
-              Email
+              <div className='header-content'>
+                <span>Email</span>
+                <button
+                  className='filter-btn'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggleFilters?.();
+                  }}
+                >
+                  <svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
+                    <path
+                      d='M6.22222 13.3333H9.77778V11.5556H6.22222V13.3333ZM0 2.66667V4.44444H16V2.66667H0ZM2.66667 8.88889H13.3333V7.11111H2.66667V8.88889Z'
+                      fill='#545F7D'
+                    />
+                  </svg>
+                </button>
+              </div>
             </th>
             <th
               className={`sortable ${sortColumn === "phone" ? `sorted-${sortDirection}` : ""}`}
               onClick={() => handleSort("phone")}
             >
-              Phone Number
+              <div className='header-content'>
+                <span>Phone Number</span>
+                <button
+                  className='filter-btn'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggleFilters?.();
+                  }}
+                >
+                  <svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
+                    <path
+                      d='M6.22222 13.3333H9.77778V11.5556H6.22222V13.3333ZM0 2.66667V4.44444H16V2.66667H0ZM2.66667 8.88889H13.3333V7.11111H2.66667V8.88889Z'
+                      fill='#545F7D'
+                    />
+                  </svg>
+                </button>
+              </div>
             </th>
             <th
               className={`sortable ${sortColumn === "date_joined" ? `sorted-${sortDirection}` : ""}`}
               onClick={() => handleSort("date_joined")}
             >
-              Date Joined
+              <div className='header-content'>
+                <span>Date Joined</span>
+                <button
+                  className='filter-btn'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggleFilters?.();
+                  }}
+                >
+                  <svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
+                    <path
+                      d='M6.22222 13.3333H9.77778V11.5556H6.22222V13.3333ZM0 2.66667V4.44444H16V2.66667H0ZM2.66667 8.88889H13.3333V7.11111H2.66667V8.88889Z'
+                      fill='#545F7D'
+                    />
+                  </svg>
+                </button>
+              </div>
             </th>
             <th
               className={`sortable ${sortColumn === "status" ? `sorted-${sortDirection}` : ""}`}
               onClick={() => handleSort("status")}
             >
-              Status
+              <div className='header-content'>
+                <span>Status</span>
+                <button
+                  className='filter-btn'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onToggleFilters?.();
+                  }}
+                >
+                  <svg width='16' height='16' viewBox='0 0 16 16' fill='none'>
+                    <path
+                      d='M6.22222 13.3333H9.77778V11.5556H6.22222V13.3333ZM0 2.66667V4.44444H16V2.66667H0ZM2.66667 8.88889H13.3333V7.11111H2.66667V8.88889Z'
+                      fill='#545F7D'
+                    />
+                  </svg>
+                </button>
+              </div>
             </th>
-            <th>{/* Actions header with filter toggle */}</th>
+            <th>{/* Actions header */}</th>
           </tr>
         </thead>
         <tbody className='users-table__body'>
@@ -142,14 +257,13 @@ const UsersTable: React.FC<UsersTableProps> = ({
                   </span>
                 </td>
                 <td>
-                  <div className='users-table__actions'>
+                  <div
+                    className='users-table__actions'
+                    style={{ position: "relative" }}
+                  >
                     <button
                       className='users-table__actions-button'
-                      onClick={() =>
-                        setActiveMenuIndex(
-                          activeMenuIndex === index ? null : index
-                        )
-                      }
+                      onClick={(e) => toggleActionMenu(index, e)}
                       aria-label='More actions'
                     >
                       <svg
@@ -173,14 +287,149 @@ const UsersTable: React.FC<UsersTableProps> = ({
                         />
                       </svg>
                     </button>
+
+                    {/* Action Menu */}
                     {activeMenuIndex === index && (
-                      <>
-                        <div
-                          className='action-menu-overlay'
-                          onClick={() => setActiveMenuIndex(null)}
-                        />
-                        <ActionMenu user={user} onAction={handleUserAction} />
-                      </>
+                      <div
+                        className='action-menu'
+                        style={{
+                          position: "absolute",
+                          top: "100%",
+                          right: "0",
+                          backgroundColor: "white",
+                          border: "1px solid #e5e5e5",
+                          borderRadius: "4px",
+                          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+                          zIndex: 1000,
+                          minWidth: "180px",
+                          padding: "8px 0",
+                        }}
+                      >
+                        <button
+                          className='action-menu__item'
+                          onClick={() => handleUserAction("View Details", user)}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "12px",
+                            width: "100%",
+                            padding: "12px 16px",
+                            border: "none",
+                            backgroundColor: "transparent",
+                            cursor: "pointer",
+                            fontSize: "14px",
+                            color: "#545F7D",
+                            textAlign: "left",
+                            transition: "background-color 0.2s",
+                          }}
+                          onMouseEnter={(e) =>
+                            (e.currentTarget.style.backgroundColor = "#f8f9fb")
+                          }
+                          onMouseLeave={(e) =>
+                            (e.currentTarget.style.backgroundColor =
+                              "transparent")
+                          }
+                        >
+                          <svg
+                            width='16'
+                            height='16'
+                            viewBox='0 0 16 16'
+                            fill='none'
+                          >
+                            <path
+                              d='M8 9.5C8.82843 9.5 9.5 8.82843 9.5 8C9.5 7.17157 8.82843 6.5 8 6.5C7.17157 6.5 6.5 7.17157 6.5 8C6.5 8.82843 7.17157 9.5 8 9.5Z'
+                              fill='#545F7D'
+                            />
+                            <path
+                              d='M8 1C4.5 1 1.73 3.11 1 8C1.73 12.89 4.5 15 8 15C11.5 15 14.27 12.89 15 8C14.27 3.11 11.5 1 8 1ZM8 13C5.24 13 2.83 11.36 2.18 8C2.83 4.64 5.24 3 8 3C10.76 3 13.17 4.64 13.82 8C13.17 11.36 10.76 13 8 13Z'
+                              fill='#545F7D'
+                            />
+                          </svg>
+                          View Details
+                        </button>
+
+                        <button
+                          className='action-menu__item'
+                          onClick={() =>
+                            handleUserAction("Blacklist User", user)
+                          }
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "12px",
+                            width: "100%",
+                            padding: "12px 16px",
+                            border: "none",
+                            backgroundColor: "transparent",
+                            cursor: "pointer",
+                            fontSize: "14px",
+                            color: "#545F7D",
+                            textAlign: "left",
+                            transition: "background-color 0.2s",
+                          }}
+                          onMouseEnter={(e) =>
+                            (e.currentTarget.style.backgroundColor = "#f8f9fb")
+                          }
+                          onMouseLeave={(e) =>
+                            (e.currentTarget.style.backgroundColor =
+                              "transparent")
+                          }
+                        >
+                          <svg
+                            width='16'
+                            height='16'
+                            viewBox='0 0 16 16'
+                            fill='none'
+                          >
+                            <path
+                              d='M8 1C4.13 1 1 4.13 1 8C1 11.87 4.13 15 8 15C11.87 15 15 11.87 15 8C15 4.13 11.87 1 8 1ZM11 10.59L10.59 11L8 8.41L5.41 11L5 10.59L7.59 8L5 5.41L5.41 5L8 7.59L10.59 5L11 5.41L8.41 8L11 10.59Z'
+                              fill='#545F7D'
+                            />
+                          </svg>
+                          Blacklist User
+                        </button>
+
+                        <button
+                          className='action-menu__item'
+                          onClick={() =>
+                            handleUserAction("Activate User", user)
+                          }
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "12px",
+                            width: "100%",
+                            padding: "12px 16px",
+                            border: "none",
+                            backgroundColor: "transparent",
+                            cursor: "pointer",
+                            fontSize: "14px",
+                            color: "#545F7D",
+                            textAlign: "left",
+                            transition: "background-color 0.2s",
+                          }}
+                          onMouseEnter={(e) =>
+                            (e.currentTarget.style.backgroundColor = "#f8f9fb")
+                          }
+                          onMouseLeave={(e) =>
+                            (e.currentTarget.style.backgroundColor =
+                              "transparent")
+                          }
+                        >
+                          <svg
+                            width='16'
+                            height='16'
+                            viewBox='0 0 16 16'
+                            fill='none'
+                          >
+                            <path
+                              d='M8 1C4.13 1 1 4.13 1 8C1 11.87 4.13 15 8 15C11.87 15 15 11.87 15 8C15 4.13 11.87 1 8 1ZM7 11L3.5 7.5L4.91 6.09L7 8.17L11.09 4.09L12.5 5.5L7 11Z'
+                              fill='#545F7D'
+                            />
+                          </svg>
+                          Activate User
+                        </button>
+                      </div>
                     )}
                   </div>
                 </td>

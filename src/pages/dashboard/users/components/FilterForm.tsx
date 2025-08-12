@@ -59,17 +59,6 @@ export const FilterForm: React.FC<FilterFormProps> = ({
   return (
     <div className={`filter-overlay ${isOpen ? "open" : ""}`}>
       <div className='filter-form' ref={formRef}>
-        <div className='filter-form__header'>
-          <svg viewBox='0 0 20 20' fill='currentColor'>
-            <path
-              fillRule='evenodd'
-              d='M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z'
-              clipRule='evenodd'
-            />
-          </svg>
-          <h3>Filter Users</h3>
-        </div>
-
         <div className='filter-form__field'>
           <label>Organization</label>
           <select

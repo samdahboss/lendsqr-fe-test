@@ -116,15 +116,15 @@ export default function Users() {
             <p>Try adjusting your filters or check back later.</p>
           </div>
         )}
-      </div>
 
-      {/* Filter Overlay */}
-      <FilterForm
-        filters={filters}
-        onFiltersChange={handleFiltersChange}
-        onClose={() => setShowFilters(false)}
-        isOpen={showFilters}
-      />
+        {/* Filter Form positioned relative to table */}
+        <FilterForm
+          filters={filters}
+          onFiltersChange={handleFiltersChange}
+          onClose={() => setShowFilters(false)}
+          isOpen={showFilters}
+        />
+      </div>
     </div>
   );
 }

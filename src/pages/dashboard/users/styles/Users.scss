@@ -90,8 +90,9 @@
   &__content {
     border-radius: 4px;
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
-    overflow: hidden;
+    overflow: visible;
     background: #ffffff;
+    position: relative;
 
     @include mixins.respond("medium") {
       border-radius: 8px;
