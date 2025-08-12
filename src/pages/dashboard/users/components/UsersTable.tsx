@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { User } from "@/hooks/useUsers";
 
 interface UsersTableProps {
@@ -21,6 +22,7 @@ const UsersTable: React.FC<UsersTableProps> = ({
   // showFilters
 }) => {
   const [activeMenuIndex, setActiveMenuIndex] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -48,10 +50,14 @@ const UsersTable: React.FC<UsersTableProps> = ({
   };
 
   const handleUserAction = (action: string, user: User) => {
-    console.log(`${action} user:`, user);
     setActiveMenuIndex(null);
-    // Here you would implement the actual actions
-    // like routing to user details, updating user status, etc.
+
+    if (action === "View Details") {
+      navigate(`/dashboard/users/${user._id}`);
+    } else {
+      console.log(`${action} user:`, user);
+      // Here you would implement other actions like blacklist, activate, etc.
+    }
   };
 
   const formatDate = (dateString?: string) => {

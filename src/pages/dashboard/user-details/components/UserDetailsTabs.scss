@@ -1,0 +1,41 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/mixins.scss" as *;
+
+.user-details-tabs {
+  display: flex;
+  background: $bg-primary;
+  border-bottom: 1px solid rgba(84, 95, 125, 0.14);
+  padding: 0 40px;
+
+  .tab {
+    background: none;
+    border: none;
+    padding: 20px 0;
+    margin-right: 60px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(84, 95, 125, 0.6);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $text-primary;
+    }
+
+    &.active {
+      color: $primary-teal;
+      font-weight: 500;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: $primary-teal;
+      }
+    }
+  }
+}

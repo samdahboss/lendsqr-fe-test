@@ -7,7 +7,16 @@ export function useSidebarLogic() {
 
   const isActiveRoute = (path: string): boolean => {
     if (path === "#") return false;
-    return location.pathname === path;
+    // Active if current path matches or starts with the sidebar path
+    if (location.pathname === path) return true;
+    // Special case: users link should be active for user details subroutes
+    if (
+      path === "/dashboard/users" &&
+      location.pathname.startsWith("/dashboard/users")
+    ) {
+      return true;
+    }
+    return false;
   };
 
   return {

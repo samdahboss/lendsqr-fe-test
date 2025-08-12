@@ -76,7 +76,6 @@
       position: relative;
       cursor: pointer;
       transition: background-color 0.2s ease;
-      min-width: 120px;
 
       &:hover {
         background: #fbfcfd;
@@ -162,8 +161,9 @@
 
       &:nth-child(7) {
         // Actions
-        min-width: 80px;
-        padding-right: 0;
+        // min-width: 80px;
+        // padding-right: 0;
+        
 
         .header-content .filter-btn {
           display: none; // No filter icon on actions column
@@ -279,12 +279,6 @@
       &:nth-child(6) {
         // Status
         min-width: 100px;
-      }
-
-      &:nth-child(7) {
-        // Actions
-        min-width: 80px;
-        padding-right: 0;
       }
 
       // Responsive adjustments
@@ -436,16 +430,13 @@
 // Action menu styles
 .users-table__actions {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .users-table__actions-button {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
+  // padding: 8px;
   border-radius: 4px;
   display: flex;
   align-items: center;

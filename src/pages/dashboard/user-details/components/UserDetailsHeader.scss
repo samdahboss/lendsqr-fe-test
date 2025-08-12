@@ -1,0 +1,167 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/mixins.scss" as *;
+
+.user-details-header {
+  background: $bg-primary;
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px 20px;
+
+    .back-button {
+      background: none;
+      border: none;
+      color: $text-secondary;
+      font-size: 16px;
+      font-weight: 400;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &:hover {
+        color: $primary-blue;
+      }
+    }
+
+    .header-title {
+      h1 {
+        font-size: 24px;
+        font-weight: 500;
+        color: $text-primary;
+        margin: 0;
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 20px;
+
+      button {
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1.4px;
+        transition: all 0.2s ease;
+
+        &.blacklist-btn {
+          background: none;
+          border: 1px solid $error-red;
+          color: $error-red;
+
+          &:hover {
+            background: $error-red;
+            color: white;
+          }
+        }
+
+        &.activate-btn {
+          background: none;
+          border: 1px solid $primary-teal;
+          color: $primary-teal;
+
+          &:hover {
+            background: $primary-teal;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .user-summary {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 20px 40px 40px;
+    border-bottom: 1px solid rgba(84, 95, 125, 0.14);
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .user-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid rgba(84, 95, 125, 0.1);
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .user-details-basic {
+        h2 {
+          font-size: 22px;
+          font-weight: 500;
+          color: $text-primary;
+          margin: 0 0 8px 0;
+        }
+
+        p {
+          font-size: 14px;
+          color: $text-secondary;
+          margin: 0;
+        }
+      }
+    }
+
+    .user-tier {
+      border-left: 1px solid rgba(84, 95, 125, 0.2);
+      border-right: 1px solid rgba(84, 95, 125, 0.2);
+      padding: 0 40px;
+      text-align: center;
+
+      p {
+        font-size: 14px;
+        color: $text-secondary;
+        margin: 0 0 8px 0;
+      }
+
+      .stars {
+        display: flex;
+        gap: 2px;
+
+        .star {
+          font-size: 16px;
+          color: #e9b200;
+
+          &.filled {
+            color: #e9b200;
+          }
+
+          &:not(.filled) {
+            color: rgba(233, 178, 0, 0.2);
+          }
+        }
+      }
+    }
+
+    .user-balance {
+      text-align: left;
+
+      h3 {
+        font-size: 22px;
+        font-weight: 500;
+        color: $text-primary;
+        margin: 0 0 8px 0;
+      }
+
+      p {
+        font-size: 12px;
+        color: $text-secondary;
+        margin: 0;
+      }
+    }
+  }
+}

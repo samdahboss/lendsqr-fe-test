@@ -1,0 +1,41 @@
+@use "@/styles/variables.scss" as *;
+@use "@/styles/mixins.scss" as *;
+
+.user-details {
+  min-height: 100vh;
+  background: $bg-secondary;
+
+  .user-details-loading,
+  .user-details-error {
+    @include flex-center;
+    min-height: 60vh;
+
+    .loading-spinner {
+      font-size: 18px;
+      color: $text-secondary;
+    }
+
+    .error-message {
+      text-align: center;
+      padding: 40px;
+      background: $bg-primary;
+      border-radius: 8px;
+      box-shadow: $shadow-primary;
+
+      h3 {
+        color: $error-red;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: $text-secondary;
+        margin-bottom: 20px;
+      }
+
+      button {
+        @include primary-button;
+        max-width: 200px;
+      }
+    }
+  }
+}
