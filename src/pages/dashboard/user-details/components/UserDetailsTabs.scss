@@ -2,11 +2,24 @@
 @use "@/styles/mixins.scss" as *;
 
 .user-details-tabs {
-  display: flex;
   background: $bg-primary;
   border-top: 1px solid rgba(84, 95, 125, 0.14);
   border-bottom: 1px solid rgba(84, 95, 125, 0.14);
-  padding: 0 30px;
+  overflow: hidden;
+
+  .tabs-container {
+    display: flex;
+    padding: 0 30px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE and Edge
+
+    // Hide scrollbar for WebKit browsers
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 
   .tab {
     background: none;
@@ -19,13 +32,19 @@
     cursor: pointer;
     position: relative;
     transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    &:last-child {
+      margin-right: 30px; // Add some right padding for last item
+    }
 
     &:hover {
-      color: #213f7d;
+      color: $primary-blue;
     }
 
     &.active {
-      color: #39cdcc;
+      color: $primary-teal;
       font-weight: 500;
 
       &::after {
@@ -35,7 +54,57 @@
         left: 0;
         right: 0;
         height: 3px;
-        background: #39cdcc;
+        background: $primary-teal;
+      }
+    }
+  }
+
+  // Tablet breakpoint
+  @media (max-width: 1024px) {
+    .tabs-container {
+      padding: 0 25px;
+    }
+
+    .tab {
+      margin-right: 40px;
+      font-size: 15px;
+
+      &:last-child {
+        margin-right: 25px;
+      }
+    }
+  }
+
+  // Mobile breakpoint
+  @media (max-width: 768px) {
+    .tabs-container {
+      padding: 0 20px;
+    }
+
+    .tab {
+      margin-right: 32px;
+      font-size: 14px;
+      padding: 16px 0;
+
+      &:last-child {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  // Small mobile breakpoint
+  @media (max-width: 480px) {
+    .tabs-container {
+      padding: 0 16px;
+    }
+
+    .tab {
+      margin-right: 24px;
+      font-size: 13px;
+      padding: 14px 0;
+
+      &:last-child {
+        margin-right: 16px;
       }
     }
   }

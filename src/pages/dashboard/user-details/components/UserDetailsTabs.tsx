@@ -17,15 +17,17 @@ const UserDetailsTabs: React.FC<UserDetailsTabsProps> = ({
 }) => {
   return (
     <div className='user-details-tabs'>
-      {tabs.map((tab) => (
-        <button
-          key={tab}
-          className={`tab ${activeTab === tab ? "active" : ""}`}
-          onClick={() => onTabChange(tab)}
-        >
-          {tab}
-        </button>
-      ))}
+      <div className='tabs-container'>
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            className={`tab ${activeTab === tab ? "active" : ""}`}
+            onClick={() => onTabChange(tab)}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
