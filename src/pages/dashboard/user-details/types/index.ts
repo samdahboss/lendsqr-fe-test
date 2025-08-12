@@ -1,5 +1,6 @@
 export interface UserDetails {
   id: string;
+  userId: string;
   avatar?: string;
   personalInformation: {
     fullName: string;
@@ -39,9 +40,6 @@ export interface UserDetails {
 
 export interface UserDetailsHeaderProps {
   user: UserDetails;
-  onBack: () => void;
-  onBlacklist: () => void;
-  onActivate: () => void;
 }
 
 export interface UserDetailsTabsProps {

@@ -4,14 +4,15 @@
 .user-details-tabs {
   display: flex;
   background: $bg-primary;
+  border-top: 1px solid rgba(84, 95, 125, 0.14);
   border-bottom: 1px solid rgba(84, 95, 125, 0.14);
-  padding: 0 40px;
+  padding: 0 30px;
 
   .tab {
     background: none;
     border: none;
     padding: 20px 0;
-    margin-right: 60px;
+    margin-right: 56px;
     font-size: 16px;
     font-weight: 400;
     color: rgba(84, 95, 125, 0.6);
@@ -20,11 +21,11 @@
     transition: all 0.2s ease;
 
     &:hover {
-      color: $text-primary;
+      color: #213f7d;
     }
 
     &.active {
-      color: $primary-teal;
+      color: #39cdcc;
       font-weight: 500;
 
       &::after {
@@ -34,7 +35,7 @@
         left: 0;
         right: 0;
         height: 3px;
-        background: $primary-teal;
+        background: #39cdcc;
       }
     }
   }

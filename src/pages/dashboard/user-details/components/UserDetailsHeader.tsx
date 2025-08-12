@@ -2,12 +2,7 @@ import React from "react";
 import { UserDetailsHeaderProps } from "../types";
 import "./UserDetailsHeader.scss";
 
-const UserDetailsHeader: React.FC<UserDetailsHeaderProps> = ({
-  user,
-  onBack,
-  onBlacklist,
-  onActivate,
-}) => {
+const UserDetailsHeader: React.FC<UserDetailsHeaderProps> = ({ user }) => {
   const renderStars = (tier: number) => {
     return Array.from({ length: 3 }, (_, index) => (
       <span key={index} className={`star ${index < tier ? "filled" : ""}`}>
@@ -18,23 +13,6 @@ const UserDetailsHeader: React.FC<UserDetailsHeaderProps> = ({
 
   return (
     <div className='user-details-header'>
-      <div className='header-top'>
-        <button className='back-button' onClick={onBack}>
-          ← Back to Users
-        </button>
-        <div className='header-title'>
-          <h1>User Details</h1>
-        </div>
-        <div className='header-actions'>
-          <button className='blacklist-btn' onClick={onBlacklist}>
-            BLACKLIST USER
-          </button>
-          <button className='activate-btn' onClick={onActivate}>
-            ACTIVATE USER
-          </button>
-        </div>
-      </div>
-
       <div className='user-summary'>
         <div className='user-info'>
           <div className='user-avatar'>
@@ -65,7 +43,7 @@ const UserDetailsHeader: React.FC<UserDetailsHeaderProps> = ({
           </div>
           <div className='user-details-basic'>
             <h2>{user.personalInformation.fullName}</h2>
-            <p>{user.personalInformation.emailAddress}</p>
+            <p className='user-id'>{user.userId}</p>
           </div>
         </div>
 

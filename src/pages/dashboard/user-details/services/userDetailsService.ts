@@ -3,6 +3,7 @@ import { UserDetails } from "../types";
 // Mock data that matches the Figma design
 const mockUserDetails: UserDetails = {
   id: "1",
+  userId: "LSQFF587g90",
   avatar:
     "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
   personalInformation: {
