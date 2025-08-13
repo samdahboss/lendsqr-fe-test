@@ -1,3 +1,5 @@
+import { User } from "@/hooks/useUsers";
+
 // Re-export types from the hook to maintain consistency
 export type { User, UserFilters } from "@/hooks/useUsers";
 
