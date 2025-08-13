@@ -30,19 +30,33 @@ export default function UserDetails() {
 
   if (isLoading) {
     return (
-      <div className='user-details-loading'>
-        <div className='loading-spinner'>Loading user details...</div>
+      <div className='user-details'>
+        <div className='back-navigation'>
+          <button className='back-button' onClick={handleBack}>
+            ← Back to Users
+          </button>
+        </div>
+        <div className='user-details-loading'>
+          <div className='loading-spinner'>Loading user details...</div>
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className='user-details-error'>
-        <div className='error-message'>
-          <h3>Error loading user details</h3>
-          <p>{error}</p>
-          <button onClick={handleBack}>Back to Users</button>
+      <div className='user-details'>
+        <div className='back-navigation'>
+          <button className='back-button' onClick={handleBack}>
+            ← Back to Users
+          </button>
+        </div>
+        <div className='user-details-error'>
+          <div className='error-message'>
+            <h3>Error loading user details</h3>
+            <p>{error}</p>
+            <button onClick={handleBack}>Back to Users</button>
+          </div>
         </div>
       </div>
     );
@@ -50,11 +64,18 @@ export default function UserDetails() {
 
   if (!userDetails) {
     return (
-      <div className='user-details-error'>
-        <div className='error-message'>
-          <h3>User not found</h3>
-          <p>The requested user could not be found.</p>
-          <button onClick={handleBack}>Back to Users</button>
+      <div className='user-details'>
+        <div className='back-navigation'>
+          <button className='back-button' onClick={handleBack}>
+            ← Back to Users
+          </button>
+        </div>
+        <div className='user-details-error'>
+          <div className='error-message'>
+            <h3>User not found</h3>
+            <p>The requested user could not be found.</p>
+            <button onClick={handleBack}>Back to Users</button>
+          </div>
         </div>
       </div>
     );
@@ -67,6 +88,7 @@ export default function UserDetails() {
           ← Back to Users
         </button>
       </div>
+
       <div className='page-header'>
         <h1>User Details</h1>
         <div className='header-actions'>
@@ -78,10 +100,12 @@ export default function UserDetails() {
           </button>
         </div>
       </div>
+
       <div className='user-details-container'>
         <UserDetailsHeader user={userDetails} />
         <UserDetailsTabs activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
+
       <UserDetailsContent user={userDetails} activeTab={activeTab} />
     </div>
   );
