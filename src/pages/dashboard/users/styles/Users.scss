@@ -1,40 +1,40 @@
-@use "@/styles/variables.scss";
-@use "@/styles/mixins.scss";
+@use "@/styles/variables.scss" as *;
+@use "@/styles/mixins.scss" as *;
 
 .users-page {
-  background-color: #fbfbfb;
+  background-color: $bg-secondary;
   min-height: 100vh;
-  font-family: "Work Sans", sans-serif;
-  padding: 0 40px;
+  font-family: $font-primary;
+  padding: 0 $spacing-2xl;
 
-  @include mixins.respond("large") {
-    padding: 0 32px;
+  @include respond("large") {
+    padding: 0 $spacing-xl;
   }
 
-  @include mixins.respond("medium") {
-    padding: 0 16px;
+  @include respond("medium") {
+    padding: 0 $spacing-base;
   }
 
-  @include mixins.respond("small") {
-    padding: 0 12px;
+  @include respond("small") {
+    padding: 0 $spacing-sm;
   }
 
   &__header {
-    margin-bottom: 40px;
-    padding-top: 40px;
+    margin-bottom: $spacing-2xl;
+    padding-top: $spacing-2xl;
 
     h1 {
-      font-family: "Work Sans", sans-serif;
-      font-weight: 500;
-      font-size: 24px;
+      font-family: $font-primary;
+      font-weight: $font-medium;
+      font-size: $font-3xl;
       line-height: 28px;
-      color: #213f7d;
+      color: $text-primary;
       margin: 0;
     }
 
-    @include mixins.respond("large") {
-      margin-bottom: 32px;
-      padding-top: 32px;
+    @include respond("large") {
+      margin-bottom: $spacing-xl;
+      padding-top: $spacing-xl;
 
       h1 {
         font-size: 22px;
@@ -42,22 +42,22 @@
       }
     }
 
-    @include mixins.respond("medium") {
-      margin-bottom: 24px;
-      padding-top: 24px;
+    @include respond("medium") {
+      margin-bottom: $spacing-lg;
+      padding-top: $spacing-lg;
 
       h1 {
-        font-size: 20px;
+        font-size: $font-2xl;
         line-height: 24px;
       }
     }
 
-    @include mixins.respond("small") {
-      margin-bottom: 20px;
-      padding-top: 20px;
+    @include respond("small") {
+      margin-bottom: $spacing-lg;
+      padding-top: $spacing-lg;
 
       h1 {
-        font-size: 18px;
+        font-size: $font-xl;
         line-height: 22px;
       }
     }
@@ -67,44 +67,44 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 26px;
-    margin-bottom: 40px;
+    margin-bottom: $spacing-2xl;
 
-    @include mixins.respond("large") {
+    @include respond("large") {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
 
-    @include mixins.respond("medium") {
+    @include respond("medium") {
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-bottom: 32px;
+      gap: $spacing-base;
+      margin-bottom: $spacing-xl;
     }
 
-    @include mixins.respond("small") {
+    @include respond("small") {
       grid-template-columns: 1fr;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: $spacing-sm;
+      margin-bottom: $spacing-lg;
     }
   }
 
   &__content {
-    border-radius: 4px;
-    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: $radius-sm;
+    box-shadow: $shadow-primary;
     overflow: visible;
-    background: #ffffff;
+    background: $bg-primary;
     position: relative;
 
-    @include mixins.respond("medium") {
-      border-radius: 8px;
+    @include respond("medium") {
+      border-radius: $radius-base;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
-    @include mixins.respond("small") {
-      margin: 0 -12px;
+    @include respond("small") {
+      margin: 0 -#{$spacing-sm};
       border-radius: 0;
       box-shadow: none;
-      border-top: 1px solid rgba(33, 63, 125, 0.1);
-      border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+      border-top: 1px solid $border-primary;
+      border-bottom: 1px solid $border-primary;
     }
   }
 
@@ -113,71 +113,71 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 60px 20px;
-    color: #545f7d;
-    font-size: 16px;
-    gap: 16px;
+    padding: 60px $spacing-lg;
+    color: $text-secondary;
+    font-size: $font-lg;
+    gap: $spacing-base;
 
     .spinner {
-      width: 32px;
-      height: 32px;
-      border: 3px solid #f3f3f3;
-      border-top: 3px solid #39cdcc;
-      border-radius: 50%;
+      width: $spacing-xl;
+      height: $spacing-xl;
+      border: 3px solid $gray-100;
+      border-top: 3px solid $primary-teal;
+      border-radius: $radius-full;
       animation: spin 1s linear infinite;
     }
 
-    @include mixins.respond("medium") {
-      padding: 40px 16px;
-      font-size: 14px;
+    @include respond("medium") {
+      padding: $spacing-2xl $spacing-base;
+      font-size: $font-base;
 
       .spinner {
-        width: 24px;
-        height: 24px;
+        width: $spacing-lg;
+        height: $spacing-lg;
         border-width: 2px;
       }
     }
 
-    @include mixins.respond("small") {
-      padding: 32px 12px;
+    @include respond("small") {
+      padding: $spacing-xl $spacing-sm;
       font-size: 13px;
 
       .spinner {
-        width: 20px;
-        height: 20px;
+        width: $spacing-lg;
+        height: $spacing-lg;
       }
     }
   }
 
   &__error {
-    padding: 40px 20px;
+    padding: $spacing-2xl $spacing-lg;
     text-align: center;
-    color: #e4033b;
+    color: $error-red;
     background: #fff5f5;
     border: 1px solid #fed7d7;
-    border-radius: 8px;
-    margin: 20px;
+    border-radius: $radius-base;
+    margin: $spacing-lg;
 
     h3 {
-      margin-bottom: 12px;
-      font-size: 18px;
-      font-weight: 600;
+      margin-bottom: $spacing-sm;
+      font-size: $font-xl;
+      font-weight: $font-semibold;
     }
 
     p {
       margin: 0;
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: $font-base;
+      line-height: $leading-normal;
     }
 
-    @include mixins.respond("medium") {
-      padding: 32px 16px;
-      margin: 16px;
+    @include respond("medium") {
+      padding: $spacing-xl $spacing-base;
+      margin: $spacing-base;
       border-radius: 6px;
 
       h3 {
-        font-size: 16px;
-        margin-bottom: 8px;
+        font-size: $font-lg;
+        margin-bottom: $spacing-sm;
       }
 
       p {
@@ -185,44 +185,44 @@
       }
     }
 
-    @include mixins.respond("small") {
-      padding: 24px 12px;
-      margin: 12px;
+    @include respond("small") {
+      padding: $spacing-lg $spacing-sm;
+      margin: $spacing-sm;
 
       h3 {
         font-size: 15px;
       }
 
       p {
-        font-size: 12px;
+        font-size: $font-sm;
       }
     }
   }
 
   &__empty {
-    padding: 60px 20px;
+    padding: 60px $spacing-lg;
     text-align: center;
-    color: #545f7d;
+    color: $text-secondary;
 
     h3 {
-      margin-bottom: 12px;
-      color: #213f7d;
-      font-size: 18px;
-      font-weight: 500;
+      margin-bottom: $spacing-sm;
+      color: $text-primary;
+      font-size: $font-xl;
+      font-weight: $font-medium;
     }
 
     p {
       margin: 0;
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: $font-base;
+      line-height: $leading-normal;
     }
 
-    @include mixins.respond("medium") {
-      padding: 40px 16px;
+    @include respond("medium") {
+      padding: $spacing-2xl $spacing-base;
 
       h3 {
-        font-size: 16px;
-        margin-bottom: 8px;
+        font-size: $font-lg;
+        margin-bottom: $spacing-sm;
       }
 
       p {
@@ -230,15 +230,15 @@
       }
     }
 
-    @include mixins.respond("small") {
-      padding: 32px 12px;
+    @include respond("small") {
+      padding: $spacing-xl $spacing-sm;
 
       h3 {
         font-size: 15px;
       }
 
       p {
-        font-size: 12px;
+        font-size: $font-sm;
       }
     }
   }

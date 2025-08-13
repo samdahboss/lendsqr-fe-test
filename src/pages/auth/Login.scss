@@ -1,16 +1,16 @@
-@use "../../styles/variables" as variables;
-@use "../../styles/mixins" as mixins;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .login-container {
   display: flex;
   min-height: 100vh;
-  font-family: variables.$font-primary;
+  font-family: $font-primary;
 }
 
 .login-left {
   flex: 1;
   background: #ffffff;
-  @include mixins.flex-column-center;
+  @include flex-column-center;
   padding: 40px 60px;
   position: relative;
 
@@ -21,7 +21,7 @@
     width: 173.76px;
     height: 36px;
 
-    @include mixins.image-container;
+    @include image-container;
   }
 
   .illustration {
@@ -40,7 +40,7 @@
 .login-right {
   flex: 1;
   background: #ffffff;
-  @include mixins.flex-center;
+  @include flex-center;
   padding: 40px;
 }
 
@@ -51,40 +51,40 @@
 
 .login-form {
   .title {
-    @include mixins.page-title;
+    @include page-title;
   }
 
   .subtitle {
-    @include mixins.page-subtitle;
+    @include page-subtitle;
   }
 
   .form-group {
-    @include mixins.form-group;
+    @include form-group;
 
     .form-input {
-      @include mixins.form-input;
+      @include form-input;
     }
 
     &.password-field {
       .show-password {
-        @include mixins.password-toggle;
+        @include password-toggle;
       }
     }
   }
 
   .forgot-password {
-    @include mixins.link-text;
+    @include link-text;
     display: block;
     margin-bottom: 30px;
   }
 
   .login-button {
-    @include mixins.primary-button;
+    @include primary-button;
   }
 }
 
 // Responsive design
-@include mixins.respond("large") {
+@include respond("large") {
   .login-container {
     flex-direction: column;
     min-height: auto;
@@ -117,7 +117,7 @@
   }
 }
 
-@include mixins.respond("tablet-large") {
+@include respond("tablet-large") {
   .login-container {
     flex-direction: row;
     min-height: 100vh;
@@ -204,7 +204,7 @@
   }
 }
 
-@include mixins.respond("medium") {
+@include respond("medium") {
   .login-container {
     flex-direction: column;
     justify-content: center;
@@ -298,7 +298,7 @@
   }
 }
 
-@include mixins.respond("small") {
+@include respond("small") {
   .login-container {
     flex-direction: column;
     min-height: auto;

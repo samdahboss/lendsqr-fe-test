@@ -1,16 +1,17 @@
-@use "@/styles/mixins.scss";
+@use "@/styles/variables.scss" as *;
+@use "@/styles/mixins.scss" as *;
 
 .stats-cards {
   display: contents; // Use parent grid
 }
 
 .stats-card {
-  background: #ffffff;
-  border: 1px solid rgba(33, 63, 125, 0.06);
-  border-radius: 4px;
-  padding: 30px 26px;
+  background: $bg-primary;
+  border: 1px solid $border-primary;
+  border-radius: $radius-sm;
+  padding: $spacing-2xl 26px;
   height: 160px;
-  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: $shadow-primary;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -18,7 +19,7 @@
   position: relative;
   overflow: hidden;
 
-  @include mixins.respond("medium") {
+  @include respond("medium") {
     padding: 20px 16px;
     gap: 12px;
     height: auto;
@@ -65,31 +66,31 @@
   }
 
   &__title {
-    font-family: "Work Sans", sans-serif;
-    font-weight: 500;
-    font-size: 14px;
+    font-family: $font-primary;
+    font-weight: $font-medium;
+    font-size: $font-base;
     line-height: 16px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #545f7d;
+    color: $text-secondary;
     margin: 0;
 
-    @media (max-width: 768px) {
-      font-size: 12px;
+    @media (max-width: $tablet) {
+      font-size: $font-sm;
       line-height: 14px;
     }
   }
 
   &__value {
-    font-family: "Work Sans", sans-serif;
-    font-weight: 600;
-    font-size: 24px;
+    font-family: $font-primary;
+    font-weight: $font-semibold;
+    font-size: $font-3xl;
     line-height: 28px;
-    color: #213f7d;
+    color: $text-primary;
     margin: 0;
 
-    @media (max-width: 768px) {
-      font-size: 20px;
+    @media (max-width: $tablet) {
+      font-size: $font-2xl;
       line-height: 24px;
     }
   }

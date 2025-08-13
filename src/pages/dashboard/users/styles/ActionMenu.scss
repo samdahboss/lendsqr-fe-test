@@ -1,31 +1,31 @@
-@use "@/styles/variables.scss";
+@use "@/styles/variables.scss" as *;
 
 .action-menu {
-  background: #ffffff;
+  background: $bg-primary;
   border: 1px solid rgba(84, 95, 125, 0.04);
-  border-radius: 4px;
+  border-radius: $radius-sm;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
+  z-index: $z-dropdown;
   min-width: 180px;
   overflow: hidden;
   animation: fadeInDown 0.15s ease-out;
-  font-family: "Work Sans", sans-serif;
+  font-family: $font-primary;
 
   &__item {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
-    font-size: 14px;
+    gap: $spacing-base;
+    padding: $spacing-base $spacing-lg;
+    font-size: $font-base;
     line-height: 16px;
-    color: #545f7d;
+    color: $text-secondary;
     cursor: pointer;
     border: none;
     background: none;
     width: 100%;
     text-align: left;
     transition: all 0.15s ease;
-    border-bottom: 1px solid rgba(33, 63, 125, 0.05);
+    border-bottom: 1px solid $border-primary;
 
     &:last-child {
       border-bottom: none;
@@ -33,7 +33,7 @@
 
     &:hover {
       background: rgba(39, 205, 204, 0.02);
-      color: #213f7d;
+      color: $text-primary;
     }
 
     &:active {
@@ -50,10 +50,10 @@
     &--view {
       &:hover {
         background: rgba(57, 205, 204, 0.05);
-        color: #39cdcc;
+        color: $primary-teal;
 
         svg {
-          color: #39cdcc;
+          color: $primary-teal;
         }
       }
     }
@@ -61,10 +61,10 @@
     &--blacklist {
       &:hover {
         background: rgba(228, 3, 59, 0.05);
-        color: #e4033b;
+        color: $error-red;
 
         svg {
-          color: #e4033b;
+          color: $error-red;
         }
       }
     }
@@ -72,10 +72,10 @@
     &--activate {
       &:hover {
         background: rgba(57, 205, 98, 0.05);
-        color: #39cd62;
+        color: $success-green;
 
         svg {
-          color: #39cd62;
+          color: $success-green;
         }
       }
     }

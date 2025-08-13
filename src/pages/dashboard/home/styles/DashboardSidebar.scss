@@ -1,5 +1,5 @@
-@use "@/styles/variables" as variables;
-@use "@/styles/mixins" as mixins;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .dashboard-sidebar {
   position: fixed;
@@ -7,7 +7,7 @@
   top: 100px; // Position below header
   width: 283px;
   height: calc(100vh - 100px); // Subtract header height
-  background: variables.$primary-white;
+  background: $primary-white;
   border-right: none;
   z-index: 1000;
   overflow-y: auto;
@@ -18,20 +18,20 @@
 
   // Firefox scrollbar (moved above nested rules)
   scrollbar-width: thin;
-  scrollbar-color: rgba(variables.$text-secondary, 0.2) transparent;
+  scrollbar-color: rgba($text-secondary, 0.2) transparent;
 
-  @include mixins.respond("large") {
+  @include respond("large") {
     top: 80px;
     height: calc(100vh - 80px);
   }
 
-  @include mixins.respond("tablet-large") {
+  @include respond("tablet-large") {
     top: 80px;
     height: calc(100vh - 80px);
     width: 220px;
   }
 
-  @include mixins.respond("medium") {
+  @include respond("medium") {
     top: 70px;
     transform: translateX(-100%);
     visibility: hidden;
@@ -40,7 +40,7 @@
       visibility: visible;
     }
   }
-  @include mixins.respond("small") {
+  @include respond("small") {
     top: 50px;
     height: calc(100vh - 50px);
     transform: translateX(-100%);
@@ -60,12 +60,12 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(variables.$text-secondary, 0.2);
+    background: rgba($text-secondary, 0.2);
     border-radius: 10px;
     transition: background 0.2s ease;
 
     &:hover {
-      background: rgba(variables.$text-secondary, 0.4);
+      background: rgba($text-secondary, 0.4);
     }
   }
 }
@@ -88,7 +88,7 @@
 }
 
 .nav-section-title {
-  font-family: variables.$font-primary;
+  font-family: $font-primary;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -114,7 +114,7 @@
   padding: 10px 30px;
   text-decoration: none;
   color: #213f7d;
-  font-family: variables.$font-primary;
+  font-family: $font-primary;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
@@ -126,8 +126,8 @@
   position: relative;
 
   &:hover {
-    background: rgba(variables.$primary-teal, 0.06);
-    color: variables.$primary-teal;
+    background: rgba($primary-teal, 0.06);
+    color: $primary-teal;
 
     &::before {
       content: "";
@@ -136,18 +136,18 @@
       top: 0;
       bottom: 0;
       width: 3px;
-      background: variables.$primary-teal;
+      background: $primary-teal;
     }
 
     .nav-icon {
-      color: variables.$primary-teal;
+      color: $primary-teal;
       opacity: 1;
     }
   }
 
   &.active {
-    background: rgba(variables.$primary-teal, 0.06);
-    color: variables.$primary-teal;
+    background: rgba($primary-teal, 0.06);
+    color: $primary-teal;
 
     &::before {
       content: "";
@@ -156,11 +156,11 @@
       top: 0;
       bottom: 0;
       width: 3px;
-      background: variables.$primary-teal;
+      background: $primary-teal;
     }
 
     .nav-icon {
-      color: variables.$primary-teal;
+      color: $primary-teal;
       opacity: 1;
     }
   }
@@ -190,7 +190,7 @@
 
 .sidebar-footer {
   padding: 24px 32px;
-  border-top: 1px solid variables.$border-primary;
+  border-top: 1px solid $border-primary;
 }
 
 .logout-btn {
@@ -200,9 +200,9 @@
 }
 
 .sidebar-version {
-  font-family: variables.$font-primary;
+  font-family: $font-primary;
   font-size: 12px;
-  color: variables.$text-muted;
+  color: $text-muted;
   text-align: left;
 }
 
@@ -216,7 +216,7 @@
   z-index: 999;
   display: none;
 
-  @include mixins.respond("medium") {
+  @include respond("medium") {
     display: block;
   }
 }

@@ -1,5 +1,5 @@
-@use "@/styles/variables.scss";
-@use "@/styles/mixins.scss";
+@use "@/styles/variables.scss" as *;
+@use "@/styles/mixins.scss" as *;
 
 .filter-overlay {
   position: absolute;
@@ -22,19 +22,19 @@
   }
 
   .filter-form {
-    background: #ffffff;
+    background: $bg-primary;
     border: 1px solid rgba(84, 95, 125, 0.14);
-    border-radius: 4px;
-    padding: 20px;
+    border-radius: $radius-sm;
+    padding: $spacing-lg;
     width: 270px;
     max-height: 500px;
     overflow-y: auto;
-    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    box-shadow: $shadow-primary;
     transform: translateY(-10px);
     transition: transform 0.3s ease;
     position: absolute;
     top: 70px; // Position below the table header (adjust based on header height)
-    left: 30px; // Align with table content padding
+    left: $spacing-2xl; // Align with table content padding
     pointer-events: auto;
 
     .open & {
@@ -46,35 +46,35 @@
     }
 
     &__field {
-      margin-bottom: 20px;
+      margin-bottom: $spacing-lg;
 
       label {
         display: block;
-        font-family: "Work Sans", sans-serif;
-        font-weight: 500;
-        font-size: 14px;
+        font-family: $font-primary;
+        font-weight: $font-medium;
+        font-size: $font-base;
         line-height: 16px;
-        color: #545f7d;
+        color: $text-secondary;
         margin-bottom: 6px;
       }
 
       input,
       select {
         width: 100%;
-        padding: 14px 16px;
+        padding: 14px $spacing-base;
         border: 1px solid rgba(84, 95, 125, 0.15);
-        border-radius: 8px;
-        font-family: "Work Sans", sans-serif;
-        font-size: 14px;
+        border-radius: $radius-base;
+        font-family: $font-primary;
+        font-size: $font-base;
         line-height: 16px;
-        color: #545f7d;
-        background: #ffffff;
+        color: $text-secondary;
+        background: $bg-primary;
         transition: border-color 0.2s ease;
         box-sizing: border-box;
 
         &:focus {
           outline: none;
-          border-color: #39cdcc;
+          border-color: $border-focus;
         }
 
         &::placeholder {
@@ -85,10 +85,10 @@
       select {
         cursor: pointer;
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23545F7D' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-        background-position: right 12px center;
+        background-position: right $spacing-sm center;
         background-repeat: no-repeat;
-        background-size: 16px 16px;
-        padding-right: 40px;
+        background-size: $spacing-base $spacing-base;
+        padding-right: $spacing-2xl;
         appearance: none;
       }
     }
@@ -96,15 +96,15 @@
     &__actions {
       display: flex;
       gap: 14px;
-      margin-top: 20px;
+      margin-top: $spacing-lg;
 
       button {
         flex: 1;
-        padding: 14px 16px;
-        border-radius: 8px;
-        font-family: "Work Sans", sans-serif;
-        font-weight: 600;
-        font-size: 14px;
+        padding: 14px $spacing-base;
+        border-radius: $radius-base;
+        font-family: $font-primary;
+        font-weight: $font-semibold;
+        font-size: $font-base;
         line-height: 16px;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -112,19 +112,19 @@
 
         &.reset {
           background: transparent;
-          color: #545f7d;
-          border-color: #545f7d;
+          color: $text-secondary;
+          border-color: $text-secondary;
 
           &:hover {
-            background: #f8f9fa;
-            color: #213f7d;
+            background: $bg-light;
+            color: $text-primary;
           }
         }
 
         &.filter {
-          background: #39cdcc;
+          background: $primary-teal;
           color: white;
-          border-color: #39cdcc;
+          border-color: $primary-teal;
 
           &:hover {
             background: #2eb5b4;
@@ -141,13 +141,13 @@
 }
 
 // Mobile adjustments
-@include mixins.respond("medium") {
+@include respond("medium") {
   .filter-overlay {
     .filter-form {
       width: 280px;
-      left: 16px;
+      left: $spacing-base;
       top: 60px;
-      padding: 20px;
+      padding: $spacing-lg;
 
       &__actions {
         flex-direction: column;
@@ -157,15 +157,15 @@
   }
 }
 
-@include mixins.respond("small") {
+@include respond("small") {
   .filter-overlay {
     .filter-form {
-      left: 12px;
-      right: 12px;
+      left: $spacing-sm;
+      right: $spacing-sm;
       top: 50px;
       width: auto;
       max-width: none;
-      padding: 16px;
+      padding: $spacing-base;
     }
   }
 }

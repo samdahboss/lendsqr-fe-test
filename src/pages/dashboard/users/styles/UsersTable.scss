@@ -1,12 +1,12 @@
-@use "@/styles/variables.scss";
-@use "@/styles/mixins.scss";
+@use "@/styles/variables.scss" as *;
+@use "@/styles/mixins.scss" as *;
 
 // Container for horizontal scrolling
 .users-table-container {
   overflow-x: auto;
   overflow-y: visible;
   width: 100%;
-  background: #ffffff;
+  background: $bg-primary;
   position: relative;
 
   // Custom scrollbar styling
@@ -15,22 +15,22 @@
   }
 
   &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
+    background: $gray-100;
+    border-radius: $radius-sm;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 4px;
+    background: $gray-300;
+    border-radius: $radius-sm;
 
     &:hover {
-      background: #a8a8a8;
+      background: $gray-400;
     }
   }
 
   // For Firefox
   scrollbar-width: thin;
-  scrollbar-color: #c1c1c1 #f1f1f1;
+  scrollbar-color: $gray-300 $gray-100;
 }
 
 .users-table {
@@ -38,23 +38,23 @@
   min-width: 900px; // Increased minimum width to ensure horizontal scroll on smaller screens
   border-collapse: separate;
   border-spacing: 0;
-  font-family: "Work Sans", sans-serif;
-  background: #ffffff;
-  padding: 0px 24px;
+  font-family: $font-primary;
+  background: $bg-primary;
+  padding: 0px $spacing-lg;
   display: table; // Always display as table for proper layout
 
-  @include mixins.respond("large") {
-    padding: 0px 24px;
+  @include respond("large") {
+    padding: 0px $spacing-lg;
     min-width: 800px;
   }
 
-  @include mixins.respond("medium") {
-    padding: 0px 16px;
+  @include respond("medium") {
+    padding: 0px $spacing-base;
     min-width: 700px;
   }
 
-  @include mixins.respond("small") {
-    padding: 0px 12px;
+  @include respond("small") {
+    padding: 0px $spacing-sm;
     min-width: 600px;
   }
 
@@ -62,31 +62,30 @@
     display: table-header-group;
 
     th {
-      padding: 20px 8px;
+      padding: $spacing-lg $spacing-sm;
       text-align: left;
-      font-weight: 600;
-      color: #545f7d;
-      font-size: 12px;
+      font-weight: $font-semibold;
+      color: $text-secondary;
+      font-size: $font-sm;
       line-height: 14px;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      background: #ffffff;
-      border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+      background: $bg-primary;
+      border-bottom: 1px solid $border-primary;
       white-space: nowrap;
       position: relative;
       cursor: pointer;
       transition: background-color 0.2s ease;
 
       &:hover {
-        background: #fbfcfd;
+        background: $bg-light;
       }
 
       .header-content {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 8px;
-
+        gap: $spacing-sm;
         span {
           flex: 1;
         }
@@ -163,7 +162,6 @@
         // Actions
         // min-width: 80px;
         // padding-right: 0;
-        
 
         .header-content .filter-btn {
           display: none; // No filter icon on actions column
@@ -171,8 +169,8 @@
       }
 
       // Responsive adjustments
-      @media (max-width: 1199px) {
-        padding: 16px 6px;
+      @media (max-width: $wide) {
+        padding: $spacing-base 6px;
         font-size: 11px;
         line-height: 13px;
         min-width: 100px;
@@ -188,7 +186,7 @@
 
       @media (max-width: 991px) {
         padding: 14px 4px;
-        font-size: 10px;
+        font-size: $font-xs;
         line-height: 12px;
         min-width: 80px;
 
@@ -207,8 +205,8 @@
         }
       }
 
-      @media (max-width: 767px) {
-        padding: 12px 4px;
+      @media (max-width: $tablet) {
+        padding: $spacing-sm 4px;
         font-size: 9px;
         line-height: 11px;
         min-width: 70px;
@@ -226,7 +224,7 @@
 
   &__body {
     tr {
-      border-bottom: 1px solid #213f7d;
+      border-bottom: 1px solid $text-primary;
       transition: background-color 0.2s ease;
 
       &:hover {
@@ -234,16 +232,16 @@
       }
 
       &:last-child {
-        border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+        border-bottom: 1px solid $border-primary;
       }
     }
 
     td {
-      padding: 20px 8px;
-      color: #545f7d;
-      font-size: 14px;
+      padding: $spacing-lg $spacing-sm;
+      color: $text-secondary;
+      font-size: $font-base;
       line-height: 16px;
-      font-weight: 400;
+      font-weight: $font-regular;
       vertical-align: middle;
       white-space: nowrap;
       // overflow: hidden;
@@ -282,19 +280,19 @@
       }
 
       // Responsive adjustments
-      @include mixins.respond("large") {
+      @include respond("large") {
         padding: 16px 6px;
         font-size: 13px;
         line-height: 15px;
       }
 
-      @include mixins.respond("medium") {
+      @include respond("medium") {
         padding: 14px 4px;
         font-size: 12px;
         line-height: 14px;
       }
 
-      @include mixins.respond("small") {
+      @include respond("small") {
         padding: 12px 4px;
         font-size: 11px;
         line-height: 13px;
