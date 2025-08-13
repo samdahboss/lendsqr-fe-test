@@ -9,7 +9,7 @@
   background: $bg-primary;
   border: 1px solid $border-primary;
   border-radius: $radius-sm;
-  padding: $spacing-2xl 26px;
+  padding: 10px 26px;
   height: 160px;
   box-shadow: $shadow-primary;
   display: flex;
@@ -20,7 +20,7 @@
   overflow: hidden;
 
   @include respond("medium") {
-    padding: 20px 16px;
+    padding: 20px 16px 20px 16px;
     gap: 12px;
     height: auto;
   }
@@ -29,33 +29,35 @@
     width: 40px;
     height: 40px;
     display: flex;
+    padding: 10px;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     position: relative;
 
-    svg {
-      width: 14px;
-      height: 14px;
+    svg,
+    img {
+      width: 25px;
+      height: 25px;
     }
 
     // Icon background colors based on card type
     &--users {
-      background: rgba(223, 24, 255, 0.1);
+      background: rgba(223, 24, 255, 0.15);
     }
 
     &--active {
-      background: rgba(87, 24, 255, 0.1);
+      background: rgba(87, 24, 255, 0.15);
     }
 
     &--with-loans,
     &--loans {
-      background: rgba(245, 95, 68, 0.1);
+      background: rgba(245, 95, 68, 0.15);
     }
 
     &--with-savings,
     &--savings {
-      background: rgba(255, 51, 102, 0.1);
+      background: rgba(255, 51, 102, 0.15);
     }
   }
 
