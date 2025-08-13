@@ -155,7 +155,7 @@ describe("UserDetails Page", () => {
       expect(screen.getByText("User Details")).toBeInTheDocument();
       expect(screen.getByText("BLACKLIST USER")).toBeInTheDocument();
       expect(screen.getByText("ACTIVATE USER")).toBeInTheDocument();
-      expect(screen.getByText("Grace Effiom")).toBeInTheDocument();
+      expect(screen.getAllByText("Grace Effiom")).toHaveLength(3); // One in header, one in personal info, one in Facebook
     });
 
     it("navigates back to users when back button is clicked", () => {

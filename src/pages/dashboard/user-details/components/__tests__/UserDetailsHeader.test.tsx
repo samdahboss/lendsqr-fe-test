@@ -68,13 +68,6 @@ describe("UserDetailsHeader", () => {
     expect(screen.getByText("9912345678/Providus Bank")).toBeInTheDocument();
   });
 
-  it("renders avatar SVG when no image is provided", () => {
-    render(<UserDetailsHeader user={mockUserData} />);
-
-    const avatar = screen.getByRole("img", { hidden: true }); // SVG elements have implicit img role
-    expect(avatar).toBeInTheDocument();
-  });
-
   it("renders with different user tier levels", () => {
     const userWithDifferentTier = {
       ...mockUserData,

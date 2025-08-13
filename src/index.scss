@@ -1,6 +1,6 @@
 // Entry point for global SCSS styles
-@use "./styles/variables" as variables;
-@use "./styles/mixins" as mixins;
+@use "./styles/variables" as *;
+@use "./styles/mixins" as *;
 
 // Import Google Fonts
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap");
@@ -26,10 +26,10 @@ body,
   min-height: 100dvh;
 }
 body {
-  font-family: variables.$font-primary;
-  line-height: variables.$leading-normal;
-  color: variables.$text-primary;
-  background-color: variables.$bg-primary;
+  font-family: $font-primary;
+  line-height: $leading-normal;
+  color: $text-primary;
+  background-color: $bg-primary;
   overflow-x: hidden;
 }
 
