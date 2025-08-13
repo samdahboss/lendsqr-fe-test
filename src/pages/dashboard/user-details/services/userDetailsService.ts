@@ -50,14 +50,68 @@ const mockUserDetails: UserDetails = {
   bank: "Providus Bank",
 };
 
+const STORAGE_KEY = "lendsqr_user_details";
+
 export const fetchUserDetails = async (
   userId: string
 ): Promise<UserDetails> => {
+  // Check localStorage first
+  const storageKey = `${STORAGE_KEY}_${userId}`;
+
+  try {
+    const cachedData = localStorage.getItem(storageKey);
+    if (cachedData) {
+      console.log(`Retrieved user details for ${userId} from localStorage`);
+      return JSON.parse(cachedData);
+    }
+  } catch (error) {
+    console.warn("Failed to retrieve from localStorage:", error);
+  }
+
   // Simulate API call
-  console.log(userId);
+  console.log(`Fetching user details for ${userId} from API`);
+
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(mockUserDetails);
+      // Create user-specific data
+      const userDetails: UserDetails = {
+        ...mockUserDetails,
+        id: userId,
+        userId: userId === "1" ? "LSQFF587g90" : `LSQFF${userId}g90`,
+      };
+
+      // Store in localStorage
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(userDetails));
+        console.log(`Stored user details for ${userId} in localStorage`);
+      } catch (error) {
+        console.warn("Failed to store in localStorage:", error);
+      }
+
+      resolve(userDetails);
     }, 500);
   });
+};
+
+// Helper function to clear user details from localStorage
+export const clearUserDetailsCache = (userId?: string): void => {
+  if (userId) {
+    const storageKey = `${STORAGE_KEY}_${userId}`;
+    localStorage.removeItem(storageKey);
+    console.log(`Cleared user details for ${userId} from localStorage`);
+  } else {
+    // Clear all user details
+    Object.keys(localStorage).forEach((key) => {
+      if (key.startsWith(STORAGE_KEY)) {
+        localStorage.removeItem(key);
+      }
+    });
+    console.log("Cleared all user details from localStorage");
+  }
+};
+
+// Helper function to check if user details exist in localStorage
+export const hasUserDetailsCache = (userId: string): boolean => {
+  const storageKey = `${STORAGE_KEY}_${userId}`;
+  return localStorage.getItem(storageKey) !== null;
 };
