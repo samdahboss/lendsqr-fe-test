@@ -60,7 +60,7 @@ export default function Users() {
     return (
       <div className='users-page'>
         <div className='users-page__error'>
-          <h3>Error Loading Users</h3>
+          <h2>Error Loading Users</h2>
           <p>{error}</p>
         </div>
       </div>
@@ -112,7 +112,7 @@ export default function Users() {
 
         {!isLoading && total === 0 && (
           <div className='users-page__empty'>
-            <h3>No Users Found</h3>
+            <h2>No Users Found</h2>
             <p>Try adjusting your filters or check back later.</p>
           </div>
         )}
