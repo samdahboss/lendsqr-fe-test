@@ -8,7 +8,8 @@ export default function DashboardRoutes() {
   return (
     <DashboardLayout>
       <Routes>
-        <Route index element={<Users />} />
+        {/* <Route index element={<Dashboard />} /> */}
+        <Route path="/" element={<Users />} />
         <Route path='users' element={<Users />} />
         <Route path='users/:id' element={<UserDetails />} />
         {/* Add more dashboard routes here as needed */}
